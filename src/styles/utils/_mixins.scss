@@ -1,0 +1,5 @@
+@import '../base/variables';
+@mixin input-borders {
+    border: 1px solid $color-coffee;
+    border-radius: $border-radius-15;
+}

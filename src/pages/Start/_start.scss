@@ -1,0 +1,42 @@
+@import '../../styles/base/variables';
+
+.start {
+    background-color: $color-cream;
+    // min-height: calc(100dvh - 80px); 
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: $spacing-40 $spacing-15;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+    gap: 181px;
+
+    &__background {
+        align-self: end;
+    }
+
+    &__logo{
+        margin-bottom: -25px;
+
+        img {
+            width: 176px;
+            height: auto;
+        }
+    }
+
+    &__title {
+        img {
+            width: 233px;
+            height: auto;
+        }
+    }
+
+    &__buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-16;
+    }
+}

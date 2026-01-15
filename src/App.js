@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Start from './pages/Start/Start';
+import Login from './pages/Login/Login';
+import RegisterStep1 from './pages/Register/RegisterStep1';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('start');
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'start':
+        return <Start onNavigate={setCurrentPage} />;
+      case 'login':
+        return <Login onNavigate={setCurrentPage} />;
+      case 'register':
+        return <RegisterStep1 onNavigate={setCurrentPage} />;
+      default: 
+        return <Start onNavigate={setCurrentPage} />;
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {renderPage()}
     </div>
   );
 }

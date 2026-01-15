@@ -1,0 +1,33 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+
+.button {
+    @include text-16-regular;
+    border: none;
+    border-radius: $border-radius-15;
+    cursor: pointer; 
+    transition: all 0.2s;
+    width: 100%;
+    text-align: center;
+
+    &--primary {
+        background-color: $color-coffee;
+        color: $color-cream;
+
+    }
+
+    &--secondary {
+        background-color: $color-cream;
+        color: $color-coffee;
+        border: 1px solid $color-coffee;
+
+    }
+
+    &--large {
+        padding: 14.5px 0;
+        min-height: 44px;
+    }
+    &--small {
+        padding: 7.5px 0;
+    }
+}

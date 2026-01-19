@@ -14,7 +14,13 @@ function App() {
       case 'login':
         return <Login onNavigate={setCurrentPage} />;
       case 'register':
-        return <RegisterStep1 onNavigate={setCurrentPage} />;
+        return <RegisterStep1 
+          onNavigate={setCurrentPage} 
+          onPhoneSubmit={(phone) => {
+            console.log("Телефон для подтверждения:", phone);
+            setCurrentPage('register-step2');
+          }} 
+          />;
       default: 
         return <Start onNavigate={setCurrentPage} />;
     }

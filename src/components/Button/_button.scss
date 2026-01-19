@@ -5,10 +5,19 @@
     @include text-16-regular;
     border: none;
     border-radius: $border-radius-15;
-    cursor: pointer; 
+    cursor: pointer;
     transition: all 0.2s;
     width: 100%;
     text-align: center;
+
+    &:active {
+        opacity: 0.8;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 
     &--primary {
         background-color: $color-coffee;
@@ -27,6 +36,7 @@
         padding: 14.5px 0;
         min-height: 44px;
     }
+
     &--small {
         padding: 7.5px 0;
     }

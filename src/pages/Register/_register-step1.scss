@@ -39,6 +39,7 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-12;
+        position: relative;
     }
 
     &__label {
@@ -62,8 +63,22 @@
             box-shadow: 0 0 0 2px rgba($color-coffee, 0.2);
         }
 
-        &:invalid {
-            border-color: #ff4444; // тут можно переделать
-        }
+        // &:invalid {
+        //     border-color: #ff4444; // тут можно переделать
+        // }
+    }
+
+    &__icon-success {
+        position: absolute;
+        top: 55%;
+        right: 12px;
+        pointer-events: none;
+    }
+
+    &__error {
+        @include text-16-regular;
+        text-align: left;
+        color: $color-coffee;
+        transition: 0.2s all; // стили ошибки взяты из головы, в макете ничего нет
     }
 }

@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Start from './pages/Start/Start';
 import Login from './pages/Login/Login';
 import RegisterStep1 from './pages/Register/RegisterStep1';
+// import testApi from './api/testApi';
 
 function App() {
+  // useEffect(() => {
+  //   testApi();
+  // }, []);
+
   const [currentPage, setCurrentPage] = useState('start');
 
   const renderPage = () => {
@@ -18,7 +23,8 @@ function App() {
           onNavigate={setCurrentPage} 
           onPhoneSubmit={(phone) => {
             console.log("Телефон для подтверждения:", phone);
-            setCurrentPage('register-step2');
+            // TODO: создать страницу PhoneCode для подтверждения кода телефона setCurrentPage('phone-code')
+            alert(`Код отправлке на ${phone}. Нужна страница ввода кода`)
           }} 
           />;
       default: 

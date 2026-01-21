@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { registerUser } from "../../api/authApi";
 import './_register-step1.scss';
 import Button from "../../components/Button/Button";
 import AcceptIcon from "../../components/AcceptIcon/AcceptIcon";
@@ -9,11 +10,15 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
     //     onNavigate('start');
     // } technical button
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+
     const {
         register,
         handleSubmit,
         control,
-        formState: { errors, isValid, isDirty, isSubmitting },
+        formState: { errors, isValid },
         watch
     } = useForm({
         mode: 'onChange',
@@ -27,18 +32,32 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
     const watchAllFields = watch(['name', 'phone', 'email']);
     const allFieldsFilled = watchAllFields.every(field => field?.trim() !== '');
 
-    const onSubmit = (data) => {
-        console.log(`Данные формы ${data}`); // отладка
+    const onSubmit = async (data) => {
+        setIsLoading(true);
+        setError(null);
 
-        const cleanPhone = data.phone.replace(/\D/g, '');
-        const formattedPhone = cleanPhone.startsWith('7')
-            ? `+${cleanPhone}`
-            : `+7${cleanPhone}`;
+        try {
+            const cleanPhone = data.phone.replace(/\D/g, '');
+            const formattedPhone = cleanPhone.startsWith('7')
+                ? `+${cleanPhone}`
+                : `+7${cleanPhone}`;
 
-        console.log("Отформатированный телефон:", formattedPhone); // отладка
-        console.log(`Код для подтверждения 1234 - заглушка`); // отладка
+            const userData = {
+                ...data,
+                phone: formattedPhone
+            }
+            console.log("Отправляем данные на Supabase", userData);
 
-        onPhoneSubmit(formattedPhone); // здесь нужно сохранить телефон для register--step2
+            const result = await registerUser(userData);
+            console.log("Успех", result);
+
+            onPhoneSubmit(formattedPhone);
+        } catch (error) {
+            console.error("Ошибка при регистрации", error);
+            setError(error.message || "Ошибка при отправке данных");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     console.log("Form errors:", errors);
@@ -56,7 +75,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
             <div className='register__container'>
                 <h1 className="register__title">Регистрация</h1>
-                <form className='register__form' onSubmit={handleSubmit(onSubmit)}>
+                <form className='register__form'>
                     <div className='register__field'>
                         <label htmlFor='username' className='register__label'>Ваше имя *</label>
                         <input
@@ -80,7 +99,6 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             })}
                         >
                         </input>
-                        {/* TODO:add smooth animation for icon */}
                         {!errors.name && watch('name')?.trim() && (
                             <div className='register__icon-success'>
                                 <AcceptIcon />
@@ -125,7 +143,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             {...register("email", {
                                 required: 'Эл. почта обязательна',
                                 pattern: {
-                                    value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, 
+                                    value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
                                     message: 'Некорректный адрес эл. почты'
                                 }
                             })}
@@ -147,11 +165,12 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
             <Button
                 variant='primary'
                 size='large'
-                onClick={handleSubmit(onSubmit)}
-                disabled={!isValid || !allFieldsFilled || isSubmitting}
-
+                type='submit'
+                disabled={!isValid || !allFieldsFilled || isLoading}
+                        onClick={handleSubmit(onSubmit)}
             >
-                {isSubmitting ? 'Отправка...' : 'Отправить код'}
+                {/* TODO: add Loading page */}
+                {isLoading ? 'Отправка...' : 'Отправить код'}
             </Button>
         </section>
     );

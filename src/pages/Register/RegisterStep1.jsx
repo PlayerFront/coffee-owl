@@ -115,7 +115,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             type='tel'
                             inputMode='numeric'
                             className={`register__input ${errors.name ? 'register__input--error' : ''}`}
-                            placeholder='+7' // placeholder в макете нет, но он нужен для подсказки пользователю
+                            placeholder='+7'
                             {...register("phone", {
                                 required: 'Телефон обязателен',
                                 pattern: {
@@ -161,7 +161,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
                 </form>
             </div>
-
+{/* TODO: сделать подпись к кнопке, а может даже и чекбокс по политике конфиденциальности (в макете нет) */}
             <Button
                 variant='primary'
                 size='large'

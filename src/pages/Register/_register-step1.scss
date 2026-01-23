@@ -81,4 +81,26 @@
         color: $color-coffee;
         transition: 0.2s all; // стили ошибки взяты из головы, в макете ничего нет
     }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__agreement {
+        @include text-12-regular;
+        color: $color-coffee;
+        text-align: left;
+    }
+
+    &__policy-link {
+        @include text-12-regular;
+        background: none;
+        border: none;
+        color: $color-coffee;
+        text-decoration: underline;
+        padding: 0;
+        display: inline;
+    }
 }

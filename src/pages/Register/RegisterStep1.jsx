@@ -4,14 +4,13 @@ import { registerUser } from "../../api/authApi";
 import './_register-step1.scss';
 import Button from "../../components/Button/Button";
 import AcceptIcon from "../../components/AcceptIcon/AcceptIcon";
+import PolicyModal from "../../components/PolicyModal/PolicyModal";
 
 const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
-    // const handleClickBack = () => {
-    //     onNavigate('start');
-    // } technical button
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showPolicyModal, setShowPolicyModal] = useState(false);
 
 
     const {
@@ -65,13 +64,6 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
     return (
         <section className='register register--step1' id='register--step1'>
-            {/* <Button
-                variant='secondary'
-                size='small'
-                onClick={handleClickBack}
-            >
-                ←
-            </Button>  Кнопка для разработки */}
 
             <div className='register__container'>
                 <h1 className="register__title">Регистрация</h1>
@@ -115,7 +107,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             type='tel'
                             inputMode='numeric'
                             className={`register__input ${errors.name ? 'register__input--error' : ''}`}
-                            placeholder='+7' // placeholder в макете нет, но он нужен для подсказки пользователю
+                            placeholder='+7'
                             {...register("phone", {
                                 required: 'Телефон обязателен',
                                 pattern: {
@@ -161,17 +153,32 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
                 </form>
             </div>
+            <div className='register__buttons'>
+                <p className='register__agreement'>
+                    Нажимая кнопку, вы соглашаетесь с {' '}
+                    <button
+                        type="button"
+                        className="register__policy-link"
+                        onClick={() => setShowPolicyModal(true)}
+                    >
+                        политикой конфиденциальности
+                    </button>
+                    { showPolicyModal && (
+                        <PolicyModal onClose={() => setShowPolicyModal(false)} />
+                    )}
+                </p>
 
-            <Button
-                variant='primary'
-                size='large'
-                type='submit'
-                disabled={!isValid || !allFieldsFilled || isLoading}
-                        onClick={handleSubmit(onSubmit)}
-            >
-                {/* TODO: add Loading page */}
-                {isLoading ? 'Отправка...' : 'Отправить код'}
-            </Button>
+                <Button
+                    variant='primary'
+                    size='large'
+                    type='submit'
+                    disabled={!isValid || !allFieldsFilled || isLoading}
+                    onClick={handleSubmit(onSubmit)}
+                >
+                    {/* TODO: add Loading page */}
+                    {isLoading ? 'Отправка...' : 'Отправить код'}
+                </Button>
+            </div>
         </section>
     );
 };

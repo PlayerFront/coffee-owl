@@ -1,0 +1,65 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+@import '../../styles/utils/mixins';
+
+.phone-code {
+    background-color: $color-cream;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: $spacing-40 $spacing-15;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+    gap: 250px; //??????
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-32;
+    }
+
+    &__title {
+        @include text-32-regular;
+        margin: 0;
+        color: $color-coffee;
+        display: inline; // что меняется?
+    }
+
+    &__code {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+        width: 100%;
+    }
+
+    &__description {
+        @include text-16-regular;
+        margin: 0;
+        text-align: left;
+        color: $color-coffee;
+    }
+
+    &__number {
+        @include text-16-bold;
+        color: $color-coffee;
+    }
+
+    &__inputs {
+        display: flex;
+        gap: $spacing-15;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__input {
+        @include input-borders;
+        @include text-16-regular;
+        width: 79px;
+        height: 48px;
+        background: inherit;
+        text-align: center;
+    }
+}

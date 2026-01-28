@@ -64,7 +64,6 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
     return (
         <section className='register register--step1' id='register--step1'>
-
             <div className='register__container'>
                 <h1 className="register__title">Регистрация</h1>
                 <form className='register__form'>
@@ -163,10 +162,10 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                     >
                         политикой конфиденциальности
                     </button>
-                    { showPolicyModal && (
-                        <PolicyModal onClose={() => setShowPolicyModal(false)} />
-                    )}
                 </p>
+                {showPolicyModal && (
+                    <PolicyModal onClose={() => setShowPolicyModal(false)} />
+                )}
 
                 <Button
                     variant='primary'

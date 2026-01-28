@@ -1,4 +1,5 @@
 import { supabase } from "../utils/supabaseClient";
+import { saveUserToStorage } from "../utils/authStorage";
 
 const generateCode = () => '1234';
 
@@ -47,13 +48,16 @@ export const verifyCode = async (phone, code) => {
     }
 
     const { error: updateError } = await supabase 
-        .from('users')
-        .update({ is_verified: true, verification_code: null })
+        .from('users') 
+        .update({ is_verified: true, verification_code: null }) //  last_login: new Date().toISOString()
         .eq('phone', phone);
 
     if (updateError) throw updateError;
 
-    return { success: true, user: data};
+    const updatedUser = {...data, is_verified: true, last_login: new Date().toISOString() }; // last_login: new Date().toISOString()
+    saveUserToStorage(updatedUser);
+
+    return { success: true, user: updatedUser}; // data
 }
 
 // NOTE: повторная отправка кода

@@ -1,20 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import './_phone-code.scss';
 import Button from "../../components/Button/Button";
+import { verifyCode, resendCode } from '../../api/authApi';
 
 const PhoneCode = ({
     phone,
-    // flow = 'register' уточнить зачем нужно!!!!!!
     onCodeSubmit,
     onResendCode
-    // onBack кнопка для возврата назад, он не нужна
 }) => {
     const [code, setCode] = useState(['', '', '', '']);
     const [timer, setTimer] = useState(60);
-    const [isLoading, setIsLoading] = useState(false); //посмотреть для чего нужно
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const inputRefs = [ //узнать подробнее про ref
+    const inputRefs = [
         useRef(null),
         useRef(null),
         useRef(null),
@@ -99,17 +98,22 @@ const PhoneCode = ({
             return;
         }
 
-        setIsLoading(true);
-        setError('');
-
         try {
+            setIsLoading(true);
+            setError('');
+
+            // const result = await verifyCode(phone, fullCode);
+            // console.log('Успешная регистрация', result.user);
+
             if (onCodeSubmit) {
                 await onCodeSubmit(fullCode);
             }
         } catch (error) {
+            console.error('Ошибка проверки кода', error)
             setError('Неверный код. Попробуйте еще раз');
             setCode(['', '', '', '']);
             inputRefs[0].current.focus();
+            // throw error;
         } finally {
             setIsLoading(false);
         }
@@ -118,10 +122,13 @@ const PhoneCode = ({
     const handleResend = async () => {
         if (timer > 0) return;
 
-        setIsLoading(true);
-        setError('');
-
         try {
+            setIsLoading(true);
+            setError('');
+
+            const result = await resendCode(phone);
+            console.log('Новый код:', result.code);
+            
             if (onResendCode) {
                 await onResendCode();
                 setTimer(60);

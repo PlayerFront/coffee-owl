@@ -149,7 +149,7 @@ const PhoneCode = ({
                     Вам отправлен код подтверждения
                 </h1>
                 <div className='phone-code__code'>
-                    <p className='phone-code__description'>На номер <span className='phone-code__number'>{maskedPhone}+7XXXXXXXX</span></p>
+                    <p className='phone-code__description'>На номер <span className='phone-code__number'>{maskedPhone}</span></p>
                     <div className='phone-code__inputs'>
                         {code.map((digit, index) => (
                             <input
@@ -157,7 +157,7 @@ const PhoneCode = ({
                                 ref={inputRefs[index]}
                                 type='text'
                                 inputMode="numeric"
-                                pattern="[0-9}*"
+                                pattern="[0-9]*"
                                 maxLength="1"
                                 value={digit}
                                 onChange={(e) => handleChange(index, e.target.value)}
@@ -186,7 +186,8 @@ const PhoneCode = ({
                             variant='secondary'
                             size='large'
                             onClick={handleResend}
-                            disabled={isLoading}
+                            disabled={isLoading || timer > 0}
+                            data-testid="mock-button-secondary" 
                         >
                             {isLoading ? 'Отправка...' : 'Отправить код повторно'}
                         </Button>

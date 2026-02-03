@@ -3,8 +3,6 @@
 @import '../../styles/utils/mixins';
 
 .register {
-
-    &--step1 {
         background-color: $color-cream;
         height: 100vh;
         height: 100dvh;
@@ -14,7 +12,6 @@
         grid-template-rows: 1fr auto;
         align-items: center;
         justify-items: center;
-    }
 
     &__container {
         width: 100%;

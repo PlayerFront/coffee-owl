@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//FIXME: значение Contoller не используется в документе
 import { useForm, Controller } from "react-hook-form";
 import { registerUser } from "../../api/authApi";
 import './_register-step1.scss';
@@ -16,7 +17,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
     const {
         register,
         handleSubmit,
-        control,
+        control, //FIXME: значение control не используется в документе
         formState: { errors, isValid },
         watch
     } = useForm({
@@ -63,7 +64,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
     console.log("Form validity:", isValid); // ДЛЯ ОТЛАДКИ
 
     return (
-        <section className='register register--step1' id='register--step1'>
+        <section className='register' id='register'>
             <div className='register__container'>
                 <h1 className="register__title">Регистрация</h1>
                 <form className='register__form'>

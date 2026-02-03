@@ -1,0 +1,102 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+@import '../../styles/utils/mixins';
+
+.login {
+    background-color: $color-cream;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: $spacing-40 $spacing-15;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-32;
+    }
+
+    &__title {
+        @include text-32-regular;
+        margin: 0;
+        color: $color-coffee;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+        // position: relative;
+    }
+
+    &__label {
+        @include text-16-regular;
+        color: $color-coffee;
+        text-align: left;
+    }
+
+    &__input-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    &__input {
+        @include input-borders;
+        @include text-16-regular;
+        background-color: inherit;
+        padding: 0 10px;
+        height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+
+        &:focus {
+            border-color: $color-coffee;
+            box-shadow: 0 0 0 2px rgba($color-coffee, 0.2);
+        }
+    }
+
+    &__icon-success {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    &__error,
+    &__error-message {
+        @include text-16-regular;
+        text-align: left;
+        color: $color-coffee;
+        transition: 0.2s all; // стили ошибки взяты из головы, в макете ничего нет
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left
+    }
+
+    &__agreement {
+        @include text-12-regular;
+        color: $color-coffee;
+    }
+
+    &__policy-link {
+        @include text-12-regular;
+        background: none;
+        border: none;
+        color: $color-coffee;
+        text-decoration: underline;
+        padding: 0;
+        display: inline;
+    }
+}

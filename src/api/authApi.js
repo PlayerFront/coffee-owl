@@ -99,9 +99,9 @@ export const loginUser = async (phone) => {
             throw new Error('Пользователь не найден. Зарегистрируйтесь');
         }
 
-        if (!existingUser.is_verified) {
-            throw new Error('Пользователь не верифицирован. Завершите регистрацию.');
-        } // сомнительно, но окей
+        // if (!existingUser.is_verified) {
+        //     throw new Error('Пользователь не верифицирован. Завершите регистрацию.');
+        // } // сомнительно, но окей
 
         const code = generateCode();
         const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
@@ -132,33 +132,3 @@ export const loginUser = async (phone) => {
         throw error;
     }
 }
-
-
-// ------------------------------------------
-// export const loginUser = async (phone) => {
-//     const code = generateCode();
-//     const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
-
-//     const { error } = await supabase
-//         .from('users')
-//         .upsert({
-//             phone: phone,
-//             verification_code: code,
-//             code_expires_at: expiresAt.toISOString(),
-//             is_verified: false,
-//             updated_at: new Date().toISOString()
-//         }, {
-//             onConflict: 'phone',
-//             onConflict: { columns: ['phone']}
-//         })
-//         .select();
-
-//         if (error) {
-//             console.error('Ошибка входа', error, phone);
-//             throw new Error("Не удалось войти. Попробуйте позже");
-//         }
-
-//         console.log(`Код для ${phone} : ${code}`);
-
-//     return { success: true, phone, code};
-// }

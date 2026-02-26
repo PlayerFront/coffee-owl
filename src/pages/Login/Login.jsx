@@ -5,6 +5,7 @@ import { loginUser } from "../../api/authApi";
 import Button from "../../components/Button/Button";
 import AcceptIcon from "../../components/AcceptIcon/AcceptIcon";
 import PolicyModal from "../../components/PolicyModal/PolicyModal";
+import BackButton from "../../components/BackButton/BackButton";
 
 const Login = ({ onNavigate, onPhoneSubmit }) => {
 
@@ -109,12 +110,12 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                     </div>
                 </form>
             </div>
-            <div className='register__buttons'>
-                <p className='register__agreement'>
-                    Нажимая кнопку, вы соглашаетесь с {' '}
+            <div className='login__buttons'>
+                <p className='login__agreement'>
+                    Нажимая кнопку, вы соглашаетесь с {' '} 
                     <button
                         type="button"
-                        className="register__policy-link"
+                        className="login__policy-link"
                         onClick={() => setShowPolicyModal(true)}
                     >
                         политикой конфиденциальности
@@ -123,7 +124,6 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                 {showPolicyModal && (
                     <PolicyModal onClose={() => setShowPolicyModal(false)} />
                 )}
-
                 <Button
                     variant='primary'
                     size='large'
@@ -133,6 +133,11 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                 >
                     {isLoading ? 'Отправка...' : 'Отправить код'}
                 </Button>
+                <BackButton
+                    onNavigate={onNavigate}
+                    fallbackpage="start"
+                >
+                </BackButton>
             </div>
 
         </section>

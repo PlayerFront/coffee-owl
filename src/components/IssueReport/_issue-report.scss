@@ -1,0 +1,104 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+@import '../../styles/utils/mixins';
+
+.issue-report {
+
+    &-overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 3000;
+        padding: 20px;
+    }
+
+    &-modal {
+        border: 1px solid $color-coffee;
+        border-radius: $border-radius-15;
+        background-color: $color-cream;
+        width: 100%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        padding: 60px 20px; 
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-15;
+    }
+
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 12px;
+        border: none;
+        background-color: inherit;
+    }
+
+    &__title {
+        @include text-24-regular;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-16;
+    }
+
+    &__field {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        //FIXME: во время открытия модалки весь задний фон сжимается, по причине свойства стартовой страницы gap: 181px; Убрать гап!
+
+        label {
+            @include text-16-bold;
+            color: $color-coffee;
+        }
+    }
+
+    &__select {
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    &__select,
+    &__input,
+    &__textarea {
+        @include input-borders;
+        @include text-16-regular;
+        font-family: inherit;
+        background-color: $color-cream;
+        padding: 10px;
+        min-height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    &__textarea {
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    &__actions {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-block-start: 20px;
+
+        button {
+            flex: 1;
+        }
+    }
+}

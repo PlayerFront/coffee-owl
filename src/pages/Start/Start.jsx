@@ -2,20 +2,31 @@ import './_start.scss';
 import logoImage from '../../assets/icons/StartPage/startPageIcon.webp';
 import titleImage from '../../assets/icons/StartPage/startPageTitleIcon.webp';
 import Button from '../../components/Button/Button';
+import IssueReport from '../../components/IssueReport/IssueReport';
+import { useState } from 'react';
+import HelpIcon from '../../components/HelpIcon/HelpIcon';
 
 const Start = ({ onNavigate }) => {
     
+    const [showIssueModal, setShowIssueModal] = useState(false);
+    
+
     const handleClickLogin = () => {
-        console.log('Кнопка войти нажата');
         onNavigate('login');
     };
 
     const handleClickRegister = () => {
-        console.log('Кнопка регистрации нажата');
         onNavigate('register');
     }
     return (
         <section className='start' id='start'>
+            <button
+                className='start__help'
+                onClick={() => setShowIssueModal(true)}
+                aria-label='Сообщить о проблеме'
+            >
+                <HelpIcon />
+            </button>
             <div className='start__background'>
                 <div className='start__logo'>
                     <img src={logoImage} alt='Coffee Owl - логотип кофейни' />
@@ -40,6 +51,12 @@ const Start = ({ onNavigate }) => {
                     Зарегистрироваться
                 </Button>
             </div>
+
+            {showIssueModal && (
+                <IssueReport
+                    onClose={() => setShowIssueModal(false)}
+                />
+            )}
         </section>
     )
 }

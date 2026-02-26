@@ -81,13 +81,16 @@
     &__buttons {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: left
+        align-items: stretch;
+        gap: $spacing-16;
     }
 
     &__agreement {
         @include text-12-regular;
         color: $color-coffee;
+        margin: 0;
+        width: 100%;
+        text-align: left;
     }
 
     &__policy-link {
@@ -97,6 +100,5 @@
         color: $color-coffee;
         text-decoration: underline;
         padding: 0;
-        display: inline;
     }
 }

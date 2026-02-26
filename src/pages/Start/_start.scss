@@ -2,7 +2,6 @@
 
 .start {
     background-color: $color-cream;
-    // min-height: calc(100dvh - 80px); 
     height: 100vh;
     height: 100dvh;
     box-sizing: border-box;
@@ -11,11 +10,16 @@
     grid-template-rows: 1fr auto;
     align-items: center;
     justify-items: center;
-    gap: 181px;
+    // gap: 181px; // убрать гап
 
-    &__background {
-        align-self: end;
+    &__help {
+        position: absolute;
+        top: 30px;
+        right: 15px;
+        border: none;
+        background-color: inherit;
     }
+
 
     &__logo{
         margin-bottom: -25px;

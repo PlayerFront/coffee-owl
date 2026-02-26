@@ -17,47 +17,47 @@
 
     &__close {
         position: absolute;
-        top: 10px;
+        top: 15px;
         right: 12px;
         border: none;
         background-color: inherit;
     }
 
     &-overlay {
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
 
-    &::-webkit-scrollbar-track {
-        background: $color-cream;
-        border-radius: 4px;
-    }
+        &::-webkit-scrollbar-track {
+            background: $color-cream;
+            border-radius: 4px;
+        }
 
-    &::-webkit-scrollbar-thumb {
-        background: $color-cream;
-        border-radius: 4px;
-    }
-   
-    scrollbar-width: thin;
-    scrollbar-color: $color-coffee $color-cream;
-    
-    @include text-12-regular;
-    border: 1px solid $color-coffee;
-    border-radius: $border-radius-15;
-    background-color: $color-cream;
-    width: 100%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
+        &::-webkit-scrollbar-thumb {
+            background: $color-cream;
+            border-radius: 4px;
+        }
 
-    h2 {
+        scrollbar-width: thin;
+        scrollbar-color: $color-coffee $color-cream;
+
         @include text-12-regular;
-        font-weight: bold;
-        margin: 0;
-    }
+        border: 1px solid $color-coffee;
+        border-radius: $border-radius-15;
+        background-color: $color-cream;
+        width: 100%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            @include text-12-regular;
+            font-weight: bold;
+            margin: 0;
+        }
     }
 }

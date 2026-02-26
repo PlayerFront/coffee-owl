@@ -6,7 +6,7 @@ const PolicyModal = ({ onClose }) => {
     return (
         <section className='policy-modal' onClick={onClose}>
             <div className="policy-modal-overlay" onClick={(e) => e.stopPropagation()}>
-                <button className="policy-modal__close" onClick={onClose} aria-label='закрыть'> {/*TODO: расположить красиво кнопку*/}
+                <button className="policy-modal__close" onClick={onClose} aria-label='закрыть'>
                     <CloseIcon />
                 </button>
                 <div className="policy-modal__header">

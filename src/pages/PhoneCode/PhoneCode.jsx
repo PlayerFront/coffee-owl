@@ -20,10 +20,6 @@ const PhoneCode = ({
         useRef(null)
     ];
 
-    const maskedPhone = phone
-        ? `+7 *** ***-**-${phone.slice(-2)}`
-        : '';
-
     const handleChange = (index, value) => {
         if (!/^\d*$/.test(value)) return;
 
@@ -149,7 +145,7 @@ const PhoneCode = ({
                     Вам отправлен код подтверждения
                 </h1>
                 <div className='phone-code__code'>
-                    <p className='phone-code__description'>На номер <span className='phone-code__number'>{maskedPhone}</span></p>
+                    <p className='phone-code__description'>На номер <span className='phone-code__number'>{phone}</span></p>
                     <div className='phone-code__inputs'>
                         {code.map((digit, index) => (
                             <input

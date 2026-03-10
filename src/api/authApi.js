@@ -5,6 +5,20 @@ const generateCode = () => '1234';
 
 // NOTE: Регистрация пользователя
 export const registerUser = async (userData) => {
+     const { data: existingUser, error: fetchError } = await supabase
+        .from('users')
+        .select('id, is_verified')
+        .eq('phone', userData.phone)
+        .maybeSingle();
+
+    if (fetchError) throw fetchError;
+
+    if (existingUser) {
+        if (existingUser.is_verified) {
+            throw new Error('Пользователь с таким номером уже зарегистрирован!');
+        }
+    }
+
     const code = generateCode();
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
@@ -77,7 +91,7 @@ export const resendCode = async (phone) => {
 
     console.log(`Новый код для ${phone}: ${code}`);
     return { success: true, code };
-} //FIXME: у нас некоторые пользователи не верифицированы
+}
 
 // NOTE: вход пользователя
 export const loginUser = async (phone) => {
@@ -98,10 +112,6 @@ export const loginUser = async (phone) => {
         if (!existingUser) {
             throw new Error('Пользователь не найден. Зарегистрируйтесь');
         }
-
-        // if (!existingUser.is_verified) {
-        //     throw new Error('Пользователь не верифицирован. Завершите регистрацию.');
-        // } // сомнительно, но окей
 
         const code = generateCode();
         const expiresAt = new Date(Date.now() + 10 * 60 * 1000);

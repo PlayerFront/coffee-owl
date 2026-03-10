@@ -3,15 +3,15 @@
 @import '../../styles/utils/mixins';
 
 .register {
-        background-color: $color-cream;
-        height: 100vh;
-        height: 100dvh;
-        box-sizing: border-box;
-        padding: $spacing-40 $spacing-15;
-        display: grid;
-        grid-template-rows: 1fr auto;
-        align-items: center;
-        justify-items: center;
+    background-color: $color-cream;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: $spacing-40 $spacing-15;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
 
     &__container {
         width: 100%;
@@ -72,23 +72,38 @@
         pointer-events: none;
     }
 
-    &__error {
+    &__error,
+    &__error-message {
         @include text-16-regular;
         text-align: left;
         color: $color-coffee;
         transition: 0.2s all; // стили ошибки взяты из головы, в макете ничего нет
     }
 
+    &__login-link {
+        @include text-16-regular;
+        background: none;
+        border: none;
+        color: $color-coffee;
+        text-decoration: underline;
+        padding: 0;
+        display: inline;
+    }
+
     &__buttons {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        gap: $spacing-16;
         text-align: left;
     }
 
     &__agreement {
         @include text-12-regular;
         color: $color-coffee;
+        margin: 0;
+        width: 100%;
+        text-align: left;
     }
 
     &__policy-link {

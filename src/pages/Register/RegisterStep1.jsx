@@ -6,6 +6,7 @@ import './_register-step1.scss';
 import Button from "../../components/Button/Button";
 import AcceptIcon from "../../components/AcceptIcon/AcceptIcon";
 import PolicyModal from "../../components/PolicyModal/PolicyModal";
+import BackButton from "../../components/BackButton/BackButton";
 
 const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
 
@@ -150,7 +151,20 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             <span className='register__error'>{errors.email.message}</span>
                         )}
                     </div>
-
+                    {error && error.includes('уже зарегистрирован') ? (
+                        <div className="register__login-promt">
+                            <span className="register__error-message">{error}</span>{' '}
+                            <button
+                                type="button"
+                                className="register__login-link"
+                                onClick={() => onNavigate('login')}
+                            >
+                                Войти?
+                            </button>
+                        </div>
+                    ) : error && (
+                        <div className="register__error-message">{error}</div>
+                    )}
                 </form>
             </div>
             <div className='register__buttons'>
@@ -175,9 +189,13 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                     disabled={!isValid || !allFieldsFilled || isLoading}
                     onClick={handleSubmit(onSubmit)}
                 >
-                    {/* TODO: add Loading page */}
                     {isLoading ? 'Отправка...' : 'Отправить код'}
                 </Button>
+                <BackButton
+                    onNavigate={onNavigate}
+                    fallbackpage="start"
+                >
+                </BackButton>
             </div>
         </section>
     );

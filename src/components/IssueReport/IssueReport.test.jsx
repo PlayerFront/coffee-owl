@@ -9,12 +9,12 @@ window.location = { href: jest.fn() };
 jest.mock('../../components/CloseIcon/CloseIcon', () => ({
     __esModule: true,
     default: ({ onClose }) => (
-        <button
+        <span
             data-testid="mock-icon-close"
             onClick={onClose}
         >
             Закрыть
-        </button>
+        </span>
     )
 }));
 

@@ -21,8 +21,7 @@ const IssueReport = ({ onClose, userPhone = '' }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const subject = encodeURIComponent(`Проблема работы приложения Coffee owl: ${type}`); // тут мне не понятно что такое encodeURIComponent
-
+        const subject = encodeURIComponent(`Проблема работы приложения Coffee owl: ${type}`); 
         const body = encodeURIComponent(
             `Тип проблемы: ${type}\n` +
             `Описание: ${description}\n` +

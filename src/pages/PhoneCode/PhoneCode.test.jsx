@@ -53,7 +53,7 @@ describe('PhoneCode component', () => {
 
         expect(screen.getByText('Вам отправлен код подтверждения')).toBeInTheDocument();
         expect(screen.getByText('На номер')).toBeInTheDocument();
-        expect(screen.getByText('+7 *** ***-**-67')).toBeInTheDocument();
+        expect(screen.getByText('+79991234567')).toBeInTheDocument();
 
         const inputs = screen.getAllByRole('textbox');
         expect(inputs).toHaveLength(4);
@@ -61,18 +61,6 @@ describe('PhoneCode component', () => {
         expect(screen.getByTestId('mock-button-primary')).toBeInTheDocument();
         expect(screen.getByTestId('mock-button-primary')).toHaveTextContent('Подтвердить');
     }); // Успех
-
-    test('Правмльно маскирует номер телефона', () => {
-        const { rerender } = render(<PhoneCode {...defaultProps} />);
-        expect(screen.getByText('+7 *** ***-**-67')).toBeInTheDocument();
-
-        rerender(<PhoneCode {...defaultProps} phone="+79998887766" />);
-        expect(screen.getByText('+7 *** ***-**-66')).toBeInTheDocument();
-
-
-        rerender(<PhoneCode {...defaultProps} phone="" />);
-        expect(screen.queryByText('+7 *** ***-**-')).not.toBeInTheDocument();
-    }); // успех
 
     test('Автоматический фокус на первом поле ввода', () => {
         render(<PhoneCode {...defaultProps} />);

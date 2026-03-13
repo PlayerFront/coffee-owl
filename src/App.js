@@ -7,6 +7,7 @@ import PhoneCode from './pages/PhoneCode/PhoneCode';
 import Catalog from './pages/Catalog/Catalog';
 import { isUserAuthenticated, saveUserToStorage } from './utils/authStorage';
 import { verifyCode, resendCode } from './api/authApi';
+import Main from './pages/Main/Main';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('start');
@@ -15,7 +16,7 @@ function App() {
 
   useEffect(() => {
     if (isUserAuthenticated()) {
-      setCurrentPage('catalog');
+      setCurrentPage('main');
     }
   }, []);
 
@@ -29,7 +30,7 @@ function App() {
 
   const handleAuthSuccess = (userData) => {
     setUser(userData);
-    setCurrentPage('catalog');
+    setCurrentPage('main');
   };
 
   const renderPage = () => {
@@ -60,18 +61,15 @@ function App() {
             try {
               const result = await verifyCode(phoneForVerification, code);
               saveUserToStorage(result.user);
-              setCurrentPage('catalog');
+              setCurrentPage('main');
             } catch (error) {
               throw error;
             }
           }}
           onResendCode={() => resendCode(phoneForVerification)}
         />;
-      case 'catalog':
-        return <Catalog
-          onNavigate={setCurrentPage}
-          onLogout={handleLogout}
-        />
+      case 'main':
+        return <Main onLogout={handleLogout}/>
       default:
         return <Start onNavigate={setCurrentPage} />;
     }

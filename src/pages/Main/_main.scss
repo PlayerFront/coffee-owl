@@ -1,0 +1,13 @@
+@import '../../styles/base/variables';
+
+.main {
+    background-color: $color-cream;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: $spacing-40 $spacing-15;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+}

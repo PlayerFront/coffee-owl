@@ -64,13 +64,6 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
     return (
         <section className='login' id='login'>
             <div className='login__container'>
-                {/* <button 
-                    type="button"
-                    className="login__back"
-                    onClick={handleClickBack}
-                >
-                    Назад
-                </button> */}
                 <h1 className='login__title'>Вход</h1>
                 <form className='login__form'>
                     <div className='login__field'>
@@ -96,23 +89,39 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                                     <AcceptIcon />
                                 </div>
                             )}
+                            {errors.phone && (
+                                <span className='login__error'>
+                                    {errors.phone.message}
+                                </span>
+                            )}
                         </div>
-                        {errors.phone && (
-                            <span className='login__error'>
-                                {errors.phone.message}
-                            </span>
-                        )}
-                        {error && (
+                        {/* {error && (
                             <div className="login__error-message">
                                 {error}
                             </div>
-                        )}
+                        )} */}
                     </div>
+                    {error && error.includes('не найден') ? (
+                        <div className='login__register-promt'>
+                            <span className='login__error-message'>{error}</span>{' '}
+                            <button
+                                type='button'
+                                className='login__register-link'
+                                onClick={() => onNavigate('register')}
+                            >
+                                Зарегистрироваться?
+                            </button>
+                        </div>
+                    ): error && (
+                    <div className="login__error-message">
+                        {error}
+                    </div>
+                    )}
                 </form>
             </div>
             <div className='login__buttons'>
                 <p className='login__agreement'>
-                    Нажимая кнопку, вы соглашаетесь с {' '} 
+                    Нажимая кнопку, вы соглашаетесь с {' '}
                     <button
                         type="button"
                         className="login__policy-link"

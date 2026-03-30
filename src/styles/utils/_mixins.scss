@@ -3,3 +3,38 @@
     border: 1px solid $color-coffee;
     border-radius: $border-radius-15;
 }
+
+@mixin interactive-element {
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+
+    &:active {
+        opacity: 0.8;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin button-primary {
+    background-color: $color-coffee;
+    color: $color-cream;
+}
+
+@mixin button-secondary {
+    background-color: $color-cream;
+    color: $color-coffee;
+    border: 1px solid $color-coffee;
+}
+
+@mixin button-size-large {
+    padding: 14.5px 0;
+    min-height: 44px;
+}
+
+@mixin button-size-small {
+    padding: 7.5px 10px;
+}

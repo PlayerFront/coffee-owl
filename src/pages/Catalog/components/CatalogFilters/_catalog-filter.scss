@@ -1,0 +1,28 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.catalog-filter {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    justify-content: stretch;
+    align-items: center;
+    flex-wrap: wrap;
+    white-space: normal;
+
+    &__button {
+        @include input-borders;
+        @include text-16-regular;
+        padding: 10px;
+        background: inherit;
+        color: $color-coffee;
+        transition: all 0.3s;
+        flex: 1;
+
+        &--active{
+            background-color: $color-coffee;
+            color: $color-cream;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    background: inherit;
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    &__name {
+        @include text-16-regular;
+        margin: 0;
+    }
+
+    &__volume {
+        @include text-12-regular;
+        margin: 0;
+    }
+
+    &__price {
+        @include text-16-bold;
+        margin: 0;
+    }
+
+    &__quantity-control {
+        @include button-primary;
+        @include button-size-small;
+        border: none;
+        border-radius: $border-radius-15;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__quantity-cart {
+        @include text-16-regular;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+}

@@ -1,6 +1,7 @@
 .product__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    // repeat(auto-fill, minmax(170px, 1fr))
     column-gap: 15px;
     row-gap: 32px;
 }

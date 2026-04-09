@@ -9,7 +9,11 @@ const Main = ({ onLogout }) => {
     return (
         <div className='main'>
             <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
-            <TabContent activeTab={activeTab} onLogout={onLogout} />
+            <TabContent 
+            activeTab={activeTab} 
+            onTabChange={setActiveTab}
+            onLogout={onLogout}
+             />
         </div>
     );
 };

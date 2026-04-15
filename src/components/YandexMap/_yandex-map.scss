@@ -1,0 +1,10 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+@import '../../styles/utils/mixins';
+
+.yandex-map {
+    width: 100%;
+    height: 200px;
+    border-radius: $border-radius-15;
+    overflow: hidden;
+}

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useCart from '../../utils/useCart';
 import { Products } from '../Catalog/mockData';
 import CartItem from './components/CartItem/CartItem';
 import Button from '../../components/Button/Button';
 import './_cart.scss';
 import CartIcon from '../../components/CartIcon/CartIcon';
+import CheckOutModal from './components/CheckoutModal/CheckoutModal';
 
 const Cart = ({ onTabChange }) => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false); // для модалки
+    const handleOpenModal = () => setIsModalOpen(true);
+    const handleCloseModal = () => setIsModalOpen(false); //TODO: на будущее проделать механику автоматического закрытия модалки после оформления заказа
 
     const { cart, getQuantity, addToCart, removeFromCart } = useCart();
 
@@ -67,10 +72,19 @@ const Cart = ({ onTabChange }) => {
                 <Button
                     variant='primary'
                     size='large'
+                    onClick={handleOpenModal}
                 >
                     Оформить заказ
                 </Button>
             </div>
+
+            <CheckOutModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                cartItems={cartItems}
+                total={total}
+                getQuantity={getQuantity}
+            />
         </section>
     )
 };

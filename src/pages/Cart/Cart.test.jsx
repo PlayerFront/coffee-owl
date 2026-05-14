@@ -5,6 +5,17 @@ import Cart from "./Cart";
 import useCart from "../../utils/useCart";
 import { Products } from "../Catalog/mockData";
 
+jest.mock('../../utils/supabaseClient', () => ({
+    supabase: {
+        from: jest.fn(() => ({
+            insert: jest.fn().mockReturnThis(),
+            select: jest.fn().mockReturnThis(),
+            eq: jest.fn().mockReturnThis(),
+            order: jest.fn().mockReturnThis(),
+        })),
+    },
+}));
+
 jest.mock('../../utils/useCart');
 jest.mock('../Catalog/mockData', () => ({
     Products: [

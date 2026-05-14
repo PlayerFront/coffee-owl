@@ -87,7 +87,7 @@
             flex-shrink: 0;
         }
 
-        input:checked + .checkout-modal__radio-custom {
+        input:checked+.checkout-modal__radio-custom {
             background: $color-coffee;
             box-shadow: inset 0 0 0 2px $color-cream;
         }
@@ -116,6 +116,76 @@
 
         button {
             flex: 1;
+        }
+    }
+
+    &__select {
+        @include text-16-regular;
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid $color-coffee;
+        border-radius: 12px;
+        
+        background-color: $color-cream;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__hint {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #9A7B5C;
+        text-align: center;
+    }
+
+    // Ошибка отправки
+    &__error {
+        margin-bottom: 16px;
+        padding: 12px;
+        background-color: #FEE2E2;
+        border: 1px solid #FECACA;
+        border-radius: 8px;
+        color: #DC2626;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    &__success {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0;
+
+        svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px; //!!!!!!!!!!!!!!
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 4px 0;
+            font-size: 14px;
+            color: $color-coffee;
+        }
+
+        strong {
+            font-family: monospace;
+            background: #f5f5f5;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #333;
         }
     }
 }

@@ -13,7 +13,7 @@ const Cart = ({ onTabChange }) => {
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false); //TODO: на будущее проделать механику автоматического закрытия модалки после оформления заказа
 
-    const { cart, getQuantity, addToCart, removeFromCart } = useCart();
+    const { cart, getQuantity, addToCart, removeFromCart, clearCart } = useCart();
 
     const cartItems = Products.filter(product => getQuantity(product.id) > 0);
     const totalItems = cartItems.reduce((sum, product) => {
@@ -23,7 +23,7 @@ const Cart = ({ onTabChange }) => {
         return sum + product.price * getQuantity(product.id);
     }, 0);
 
-    if (cartItems.length === 0) {
+    if (cartItems.length === 0 && !isModalOpen) {
         return (
             <section className='cart cart--empty'>
                 <h1>Корзина</h1>
@@ -84,6 +84,8 @@ const Cart = ({ onTabChange }) => {
                 cartItems={cartItems}
                 total={total}
                 getQuantity={getQuantity}
+                onTabChange={onTabChange}
+                onClearCart={clearCart}
             />
         </section>
     )

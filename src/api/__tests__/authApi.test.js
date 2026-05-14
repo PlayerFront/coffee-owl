@@ -1,8 +1,8 @@
-import { registerUser, verifyCode, resendCode, loginUser } from "./authApi";
-import { supabase } from "../utils/supabaseClient";
-import { saveUserToStorage } from "../utils/authStorage";
+import { registerUser, verifyCode, resendCode, loginUser } from "../authApi";
+import { supabase } from "../../utils/supabaseClient";
+import { saveUserToStorage } from "../../utils/authStorage";
 
-jest.mock('../utils/supabaseClient', () => ({
+jest.mock('../../utils/supabaseClient', () => ({
     supabase: {
         from: jest.fn(() => ({
             select: jest.fn().mockReturnThis(),
@@ -16,7 +16,7 @@ jest.mock('../utils/supabaseClient', () => ({
     }
 }));
 
-jest.mock('../utils/authStorage', () => ({
+jest.mock('../../utils/authStorage', () => ({
     saveUserToStorage: jest.fn()
 }));
 

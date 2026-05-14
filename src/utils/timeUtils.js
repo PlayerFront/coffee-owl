@@ -1,5 +1,5 @@
-export const getAvailableTimes = () => {
-    const now = new Date();
+export const getAvailableTimes = (now = new Date()) => {
+    // const now = new Date();
     let currentHour = now.getHours();
     let currentMinute = now.getMinutes();
 
@@ -10,11 +10,16 @@ export const getAvailableTimes = () => {
         startHour += 1;
     }
 
+    if (startHour < 9) {
+        startHour = 9;
+        startMinute = 0;
+    }
+
     const times = [];
     let hour = startHour;
     let minute = startMinute;
 
-    while (hour < 22 || (hour === 21 && minute <= 30)) {
+    while (hour < 22 || (hour === 21 && minute < 30)) {
         const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
         times.push(timeString);
 

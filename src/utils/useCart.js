@@ -39,6 +39,7 @@ const useCart = () => {
 
     const clearCart = () => {
         setCart({});
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({}));
     };
 
     const getTotalItems = () => {

@@ -11,7 +11,7 @@ const Cart = ({ onTabChange }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false); // для модалки
     const handleOpenModal = () => setIsModalOpen(true);
-    const handleCloseModal = () => setIsModalOpen(false); //TODO: на будущее проделать механику автоматического закрытия модалки после оформления заказа
+    const handleCloseModal = () => setIsModalOpen(false); 
 
     const { cart, getQuantity, addToCart, removeFromCart, clearCart } = useCart();
 

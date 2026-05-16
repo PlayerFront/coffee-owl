@@ -3,11 +3,10 @@
 @import '../../styles/utils/mixins';
 
 .cart {
-    // padding
     background-color: $color-cream;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px);
+    // height: calc(100vh - 70px);
     justify-content: flex-start;
     gap: 32px;
     width: 100%;

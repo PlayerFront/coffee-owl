@@ -1,0 +1,69 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+@import '../../styles/utils/mixins';
+
+.profile {
+    background-color: $color-cream;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 56px;
+    width: 100%;
+    padding-bottom: 70px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 69px;
+        width: 79px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: left;
+    }
+
+    &__name {
+        @include text-24-regular;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    &__phone {
+        @include text-16-italic;
+        margin: 0;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-32;
+    }
+
+    &__menu-item {
+        @include text-16-regular;
+        display: flex;
+        align-items: center;
+        border: none;
+        background: $color-cream;
+        gap: 5px;
+        width: 100%;
+        padding: 0;
+    }
+
+    &__menu-icon {
+        display: flex;
+        align-items: center;
+    }
+}

@@ -1,19 +1,72 @@
 import React from 'react';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button/Button'; // кнопка выйти
+import './_profile.scss';
+import { getUserFromStorage } from '../../utils/authStorage';
+import AvatarIcon from '../../components/AvatarIcon/AvatarIcon';
+import OrdersIcon from '../../components/OrdersIcon/OrdersIcon';
+import SettingsIcon from '../../components/SettingsIcon/SettingsIcon';
+import TechSupportIcon from '../../components/TechSupportIcon/TechSupportIcon';
+import ContactsIcon from '../../components/ContactsIcon/ContactsIcon';
+import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
 
-const Profile = ({ onLogout }) => {
+const Profile = ({ onLogout, onTabChange }) => {
+
+    const user = getUserFromStorage();
+    const phone = user?.phone;
+    const name = user?.name;
+
+    const menuItems = [
+        {
+            icon: <OrdersIcon />,
+            label: 'Мои заказы',
+            action: () => onTabChange?.('orders'),
+        },
+        {
+            icon: <SettingsIcon />,
+            label: 'Настройки',
+            action: () => onTabChange?.('settings'),
+        },
+        {
+            icon: <TechSupportIcon />,
+            label: 'Техподдержка',
+            action: () => onTabChange?.('support')
+        },
+        {
+            icon: <ContactsIcon />,
+            label: 'Контакты',
+            action: () => onTabChange?.('contacts'),
+        },
+        {
+            icon: <LogoutIcon />,
+            label: 'Выйти',
+            action: () => onLogout(),
+        }
+    ];
+
     return (
-        <div className='profile'>
-            <h1>Профиль</h1>
-            <p>Информация о пользователе</p>
-            <Button
-                onClick={onLogout}
-                variant='primary'
-                size='large'
-            >
-                Выйти
-            </Button>
-        </div>
+        <section className='profile'>
+            <header className='profile__header'>
+                <div className='profile__info'>
+                    <h2 className='profile__name'>{name}</h2>
+                    <p className='profile__phone'>{phone}</p>
+                </div>
+                <div className='profile__avatar'>
+                    <AvatarIcon />
+                </div>
+            </header>
+            <div className='profile__menu'>
+                {menuItems.map((item, index) => (
+                    <button
+                        key={index}
+                        className='profile__menu-item'
+                        onClick={item.action}
+                    >
+                        <span className="profile__menu-icon">{item.icon}</span>
+                        <span className="profile__menu-label">{item.label}</span>
+                    </button>
+                ))}
+            </div>
+        </section>
     );
 };
 

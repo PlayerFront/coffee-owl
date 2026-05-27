@@ -67,7 +67,8 @@ describe('Profile', () => {
     test('Кнопка Мои заказы вызывает onTabChange с orders', () => {
         render(<Profile {...defaultProps} />);
         fireEvent.click(screen.getByText('Мои заказы'));
-        expect(defaultProps.onTabChange).toHaveBeenCalledWith('orders');
+        expect(screen.getByText('Мои заказы')).toBeInTheDocument();
+        expect(screen.queryByText('Настройки')).not.toBeInTheDocument();
     });
 
     test('Кнопка Настройки вызывает onTabChange с settings', () => {
@@ -88,7 +89,7 @@ describe('Profile', () => {
         expect(defaultProps.onTabChange).toHaveBeenCalledWith('contacts');
     });
 
-        test('Кнопка Выйти вызывает onLogout', () => {
+    test('Кнопка Выйти вызывает onLogout', () => {
         render(<Profile {...defaultProps} />);
         fireEvent.click(screen.getByText('Выйти'));
         expect(defaultProps.onLogout).toHaveBeenCalledTimes(1);

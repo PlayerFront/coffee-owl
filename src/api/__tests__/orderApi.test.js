@@ -108,7 +108,7 @@ describe('orderApi', () => {
                 { id: '2', user_id: 10, total_price: 370 },
             ];
 
-            mockDb.order.mockResolvedValue({ data: mockOrders, error: null });
+            mockDb.limit.mockResolvedValue({ data: mockOrders, error: null });
 
             const result = await getUserOrders(10);
 
@@ -116,7 +116,7 @@ describe('orderApi', () => {
         });
 
         test('Выбрасывается ошибка при проблеме с supabase', async () => {
-            mockDb.order.mockResolvedValue({
+            mockDb.limit.mockResolvedValue({
                 data: null,
                 error: { message: 'Database error' },
             });

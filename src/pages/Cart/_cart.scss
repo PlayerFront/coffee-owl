@@ -6,14 +6,14 @@
     background-color: $color-cream;
     display: flex;
     flex-direction: column;
-    // height: calc(100vh - 70px);
     justify-content: flex-start;
     gap: 32px;
     width: 100%;
     padding-bottom: 70px;
 
     h1 {
-        @include text-32-regular;
+        @include text-24-regular;
+        text-align: left;
     }
 
     &--empty {

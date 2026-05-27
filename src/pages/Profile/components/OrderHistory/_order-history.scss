@@ -1,0 +1,50 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+
+.order-history {
+    background-color: $color-cream;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    // max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 70px;
+    gap: 32px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-12;
+        margin-bottom: 24px;
+
+        h2 {
+            @include text-24-regular;
+            margin: 0;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+    }
+
+    &__loading,
+    &__empty {
+        @include text-16-regular;
+        text-align: center;
+        padding: 32px 0;
+    }
+
+    &__footer {
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+        background: $color-cream;
+        border-top: 1px solid $color-coffee; // !!!!
+        padding: 16px 0 80px 0;
+    }
+}

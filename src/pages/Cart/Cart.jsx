@@ -26,7 +26,6 @@ const Cart = ({ onTabChange }) => {
     if (cartItems.length === 0 && !isModalOpen) {
         return (
             <section className='cart cart--empty'>
-                <h1>Корзина</h1>
                 <div className="cart__empty-content">
                     <div className="cart__empty-icon">
                         <CartIcon

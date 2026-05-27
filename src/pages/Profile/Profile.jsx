@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../components/Button/Button'; // кнопка выйти
 import './_profile.scss';
 import { getUserFromStorage } from '../../utils/authStorage';
@@ -8,8 +8,10 @@ import SettingsIcon from '../../components/SettingsIcon/SettingsIcon';
 import TechSupportIcon from '../../components/TechSupportIcon/TechSupportIcon';
 import ContactsIcon from '../../components/ContactsIcon/ContactsIcon';
 import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
+import OrderHistory from './components/OrderHistory/OrderHistory';
 
 const Profile = ({ onLogout, onTabChange }) => {
+    const [activeView, setActiveView] = useState('menu');
 
     const user = getUserFromStorage();
     const phone = user?.phone;
@@ -19,7 +21,7 @@ const Profile = ({ onLogout, onTabChange }) => {
         {
             icon: <OrdersIcon />,
             label: 'Мои заказы',
-            action: () => onTabChange?.('orders'),
+            action: () => setActiveView('orders'),
         },
         {
             icon: <SettingsIcon />,
@@ -42,6 +44,12 @@ const Profile = ({ onLogout, onTabChange }) => {
             action: () => onLogout(),
         }
     ];
+
+    if (activeView === 'orders') {
+        return (
+            <OrderHistory onBack={() => setActiveView('menu')} />
+        );
+    }
 
     return (
         <section className='profile'>

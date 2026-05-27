@@ -1,0 +1,50 @@
+@import '../../../../../styles/base/variables';
+@import '../../../../../styles/base/typography';
+@import '../../../../../styles/utils/mixins';
+
+.order-card {
+    border: 1px solid $color-coffee;
+    border-radius: $border-radius-15;
+    padding: 16px;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__id {
+        @include text-16-bold;
+    }
+
+    &__status {
+        @include text-12-regular;
+        padding: 4px 10px;
+        border-radius: $border-radius-15;
+        border: 1px solid $color-coffee;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    &__item {
+        @include text-16-regular;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__time,
+    &__total {
+        @include text-16-bold;
+    }
+}

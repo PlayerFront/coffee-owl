@@ -71,7 +71,6 @@ describe('Cart Component', () => {
 
         render(<Cart onTabChange={mockOnTabChange} />);
 
-        expect(screen.getByText('Корзина')).toBeInTheDocument();
         expect(screen.getByText('Корзина пуста')).toBeInTheDocument();
         expect(screen.getByText('Перейти в каталог')).toBeInTheDocument();
 

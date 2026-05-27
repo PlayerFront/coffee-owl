@@ -4,6 +4,18 @@ import '@testing-library/jest-dom';
 import Profile from "./Profile";
 import { getUserFromStorage } from "../../utils/authStorage";
 
+jest.mock('../../utils/supabaseClient', () => ({
+    supabase: {
+        from: jest.fn(() => ({
+            insert: jest.fn().mockReturnThis(),
+            select: jest.fn().mockReturnThis(),
+            eq: jest.fn().mockReturnThis(),
+            order: jest.fn().mockReturnThis(),
+            limit: jest.fn().mockReturnThis(),
+        })),
+    },
+}));
+
 jest.mock('../../utils/authStorage', () => ({
     getUserFromStorage: jest.fn(() => ({
         name: 'User',

@@ -16,6 +16,7 @@ const mockDb = {
     select: jest.fn().mockReturnThis(),
     eq: jest.fn().mockReturnThis(),
     order: jest.fn().mockReturnThis(),
+    limit: jest.fn().mockReturnThis(),
 };
 
 jest.mock('../../utils/supabaseClient', () => ({

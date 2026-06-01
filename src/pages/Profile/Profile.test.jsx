@@ -94,4 +94,4 @@ describe('Profile', () => {
         fireEvent.click(screen.getByText('Выйти'));
         expect(defaultProps.onLogout).toHaveBeenCalledTimes(1);
     });
-})
+});

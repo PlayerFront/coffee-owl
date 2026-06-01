@@ -6,7 +6,7 @@
     background-color: $color-cream;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    // justify-content: center;
     gap: 32px;
     width: 100%;
     padding-bottom: 70px;
@@ -17,6 +17,10 @@
     }
 
     &--empty {
+        min-height: calc(100dvh - 70px);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
         justify-content: space-between;
     }
 

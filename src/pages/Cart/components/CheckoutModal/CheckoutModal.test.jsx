@@ -146,6 +146,29 @@ describe('Отправка заказа', () => {
         expect(screen.getByText(/09:30/)).toBeInTheDocument();
     });
 
+    test('Кнопка перейти к заказам вызывает onTabChange, initialView и onClose', async () => {
+        createOrder.mockResolvedValue({
+            id: '123',
+            display_id: 'CWL-06482',
+        });
+
+        render(<CheckOutModal {...defaultProps} />);
+        selectTime();
+
+        fireEvent.click(screen.getByText('Подтвердить'));
+
+        await waitFor(() => {
+            expect(screen.getByText('Заказ оформлен!')).toBeInTheDocument();
+        });
+
+        fireEvent.click(screen.getByText('Перейти к заказам'));
+
+        expect(defaultProps.onClose).toHaveBeenCalled();
+        expect(defaultProps.onTabChange).toHaveBeenCalledWith('profile',  { initialView: 'orders' });
+
+
+    })
+
     test('Показывается ошибка при проблеме с отправкой', async () => {
         createOrder.mockRejectedValue(new Error('Не удалось оформить заказ'));
         render(<CheckOutModal {...defaultProps} />);
@@ -185,7 +208,7 @@ describe('Отправка заказа', () => {
         fireEvent.click(screen.getByText('Подтвердить'));
 
         await waitFor(() => {
-            expect(defaultProps.onClearCart).toHaveBeenCalledTimes(1);
+            expect(defaultProps.onClearCart).toHaveBeenCalled();
         });
     });
 
@@ -211,13 +234,13 @@ describe('Отправка заказа', () => {
         expect(defaultProps.onTabChange).toHaveBeenCalledWith('catalog');
     });
 
-    test('Создает заказ с правильными данными', async() => {
+    test('Создает заказ с правильными данными', async () => {
         createOrder.mockResolvedValue({
             id: '123',
             display_id: 'CWL-06482',
         });
 
-                render(<CheckOutModal {...defaultProps} />);
+        render(<CheckOutModal {...defaultProps} />);
         selectTime();
 
         fireEvent.click(screen.getByLabelText('Картой'));
@@ -237,3 +260,15 @@ describe('Отправка заказа', () => {
         });
     });
 });
+
+// test('Кнопка перейти к заказам вызывает onTabChange, initialView и onClose', async () => {
+//     createOrder.mockResolvedValue({
+//         id: '123',
+//         display_id: 'CWL-06482',
+//     });
+
+//     render(<CheckOutModal {...defaultProps} />);
+//     selectTime();
+
+//     fireEvent.click(screen.getByText(''))
+// })

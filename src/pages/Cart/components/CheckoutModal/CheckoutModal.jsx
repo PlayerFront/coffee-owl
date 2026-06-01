@@ -83,6 +83,16 @@ const CheckOutModal = ({ isOpen, onClose, cartItems, total, getQuantity, onTabCh
                         </div>
                         <div className='checkout-modal__buttons'>
                             <Button
+                                variant='primary'
+                                size='large'
+                                onClick={() => {
+                                    onClose();
+                                    onTabChange?.('profile', { initialView: 'orders' });
+                                }}
+                            >
+                                Перейти к заказам
+                            </Button>
+                            <Button
                                 variant='secondary'
                                 size='large'
                                 onClick={() => {
@@ -150,11 +160,11 @@ const CheckOutModal = ({ isOpen, onClose, cartItems, total, getQuantity, onTabCh
                                 onChange={(e) => setPickupTime(e.target.value)}
                             >
                                 <option value="" disabled>Выберите время</option>
-                                    {getAvailableTimes().map(time => (
-                                        <option key={time} value={time}>
-                                            {time}
-                                        </option>
-                                    ))}
+                                {getAvailableTimes().map(time => (
+                                    <option key={time} value={time}>
+                                        {time}
+                                    </option>
+                                ))}
                             </select>
                             {getAvailableTimes().length === 0 && (
                                 <p className="checkout-modal__hint">

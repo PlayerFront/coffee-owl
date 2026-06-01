@@ -10,8 +10,8 @@ import ContactsIcon from '../../components/ContactsIcon/ContactsIcon';
 import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
 import OrderHistory from './components/OrderHistory/OrderHistory';
 
-const Profile = ({ onLogout, onTabChange }) => {
-    const [activeView, setActiveView] = useState('menu');
+const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
+    const [activeView, setActiveView] = useState(initialView); //'menu'
 
     const user = getUserFromStorage();
     const phone = user?.phone;

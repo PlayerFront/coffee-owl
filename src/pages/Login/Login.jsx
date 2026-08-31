@@ -42,10 +42,8 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                 ? `+${cleanPhone}`
                 : `+7${cleanPhone}`;
 
-            console.log('Провреряем пользователя в базе', formattedPhone);
 
             const result = await loginUser(formattedPhone);
-            console.log("Успех", result); // отладка
 
             if (onPhoneSubmit) {
                 onPhoneSubmit(formattedPhone)

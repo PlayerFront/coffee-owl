@@ -30,6 +30,8 @@ jest.mock('../../components/TechSupportIcon/TechSupportIcon', () => () => <span>
 jest.mock('../../components/ContactsIcon/ContactsIcon', () => () => <span>Иконка контактов</span>);
 jest.mock('../../components/LogoutIcon/LogoutIcon', () => () => <span>Иконка выхода</span>);
 
+jest.mock('../../components/EditIcon/EditIcon', () => () => <span>Иконка редактирования</span>);
+
 describe('Profile', () => {
     const defaultProps = {
         onLogout: jest.fn(),
@@ -64,17 +66,19 @@ describe('Profile', () => {
         expect(screen.getByText('Выйти')).toBeInTheDocument();
     });
 
-    test('Кнопка Мои заказы вызывает onTabChange с orders', () => {
+    test('Кнопка Мои заказы показывает заказы пользователя', () => {
         render(<Profile {...defaultProps} />);
         fireEvent.click(screen.getByText('Мои заказы'));
         expect(screen.getByText('Мои заказы')).toBeInTheDocument();
         expect(screen.queryByText('Настройки')).not.toBeInTheDocument();
     });
 
-    test('Кнопка Настройки вызывает onTabChange с settings', () => {
+    test('Кнопка Настройки показывает страницу настроек', () => {
         render(<Profile {...defaultProps} />);
         fireEvent.click(screen.getByText('Настройки'));
-        expect(defaultProps.onTabChange).toHaveBeenCalledWith('settings');
+
+        expect(screen.getByText('Настройки')).toBeInTheDocument();
+        expect(screen.queryByText('Мои заказы')).not.toBeInTheDocument();
     });
 
     test('Кнопка Техподдержка вызывает onTabChange с support', () => {

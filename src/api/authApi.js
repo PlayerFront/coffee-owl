@@ -142,3 +142,20 @@ export const loginUser = async (phone) => {
         throw error;
     }
 }
+
+// NOTE: обновление профиля пользователя
+export const updateUserProfile = async (userId, updates) => {
+    const { data, error } = await supabase
+        .from('users')
+        .update(updates)
+        .eq('id', userId)
+        .select()
+        .single();
+
+    if(error) {
+        console.error('Ошибка обновления профиля', error);
+        throw new Error('Не удалось обновить профиль');
+    }
+
+    return data;
+}

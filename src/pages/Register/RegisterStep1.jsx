@@ -47,11 +47,9 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                 ...data,
                 phone: formattedPhone
             }
-            console.log("Отправляем данные на Supabase", userData);
 
             const result = await registerUser(userData);
             console.log("Успех", result);
-
             onPhoneSubmit(formattedPhone);
         } catch (error) {
             console.error("Ошибка при регистрации", error);
@@ -60,9 +58,6 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
             setIsLoading(false);
         }
     };
-
-    console.log("Form errors:", errors);
-    console.log("Form validity:", isValid); // ДЛЯ ОТЛАДКИ
 
     return (
         <section className='register' id='register'>

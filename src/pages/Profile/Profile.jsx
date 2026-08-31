@@ -9,6 +9,7 @@ import TechSupportIcon from '../../components/TechSupportIcon/TechSupportIcon';
 import ContactsIcon from '../../components/ContactsIcon/ContactsIcon';
 import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
 import OrderHistory from './components/OrderHistory/OrderHistory';
+import Settings from './components/Settings/Settings';
 
 const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
     const [activeView, setActiveView] = useState(initialView); //'menu'
@@ -26,7 +27,7 @@ const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
         {
             icon: <SettingsIcon />,
             label: 'Настройки',
-            action: () => onTabChange?.('settings'),
+            action: () => setActiveView('settings'),
         },
         {
             icon: <TechSupportIcon />,
@@ -45,10 +46,13 @@ const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
         }
     ];
 
-    if (activeView === 'orders') {
-        return (
-            <OrderHistory onBack={() => setActiveView('menu')} />
-        );
+    const views = {
+        orders: <OrderHistory onBack={() => setActiveView('menu')} />,
+        settings: <Settings onBack={() => setActiveView('menu')} />,
+    };
+
+    if (views[activeView]) {
+        return views[activeView];
     }
 
     return (

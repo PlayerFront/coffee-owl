@@ -228,6 +228,7 @@ describe('RegisterStep1 Component', () => {
       expect(submitButton).toHaveTextContent('Отправка...');
     });
 
+
     await waitFor(() => {
       expect(registerUser).toHaveBeenCalled();
       expect(mockOnPhoneSubmit).toHaveBeenCalledWith('+79991234567');

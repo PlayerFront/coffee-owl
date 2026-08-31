@@ -1,0 +1,123 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.settings {
+    background-color: $color-cream;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    margin: 0 auto;
+    padding-bottom: 70px;
+    gap: 32px;
+
+    &__header {
+        text-align: left;
+
+        h2 {
+            @include text-24-regular;
+            margin: 0;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+    }
+
+    &__field {
+        background: inherit;
+        border: 1px solid $color-coffee;
+        border-radius: $border-radius-15;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+        position: relative;
+    }
+
+    &__field--disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    &__input {
+        @include input-borders;
+        @include text-16-regular;
+        background-color: inherit;
+        padding: 0 10px;
+        height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+
+        &:focus {
+            border-color: $color-coffee;
+            box-shadow: 0 0 0 2px rgba($color-coffee, 0.2);
+        }
+    }
+
+    &__action-btn {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        background: none;
+        border: none;
+    }
+
+    &__edit-btn {
+        background: none;
+        border: none;
+    }
+
+    &__label {
+        display: block;
+        @include text-16-bold;
+        color: $color-coffee;
+        margin-bottom: 6px;
+        text-align: left;
+    }
+
+    &__value {
+        @include text-16-italic;
+        color: $color-coffee;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    &__input[type="date"] {
+        padding-left: 32px;
+
+        &::-webkit-calendar-picker-indicator {
+            position: absolute;
+            left: 8px;
+        }
+    }
+
+    &__input--error {
+       
+    }
+
+    &__error {
+                @include text-16-regular;
+        text-align: left;
+        color: $color-coffee;
+        transition: 0.2s all;
+    }
+
+    &__footer {
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+        background: $color-cream;
+        border-top: 1px solid $color-coffee;
+        padding: 16px 0 80px 0;
+    }
+}

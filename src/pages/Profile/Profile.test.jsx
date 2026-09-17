@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import Profile from "./Profile";
 import { getUserFromStorage } from "../../utils/authStorage";
 
+
 jest.mock('../../utils/supabaseClient', () => ({
     supabase: {
         from: jest.fn(() => ({
@@ -29,6 +30,7 @@ jest.mock('../../components/SettingsIcon/SettingsIcon', () => () => <span>Ико
 jest.mock('../../components/TechSupportIcon/TechSupportIcon', () => () => <span>Иконка техподдержки</span>);
 jest.mock('../../components/ContactsIcon/ContactsIcon', () => () => <span>Иконка контактов</span>);
 jest.mock('../../components/LogoutIcon/LogoutIcon', () => () => <span>Иконка выхода</span>);
+jest.mock('../../components/CoffeeBeanIcon/CoffeeBeanIcon', () => () => <span>Иконка кофейного зерна</span>);
 
 jest.mock('../../components/EditIcon/EditIcon', () => () => <span>Иконка редактирования</span>);
 
@@ -81,10 +83,12 @@ describe('Profile', () => {
         expect(screen.queryByText('Мои заказы')).not.toBeInTheDocument();
     });
 
-    test('Кнопка Техподдержка вызывает onTabChange с support', () => {
+    test('Кнопка Техподдержка показывает страницу поддержки', () => {
         render(<Profile {...defaultProps} />);
         fireEvent.click(screen.getByText('Техподдержка'));
-        expect(defaultProps.onTabChange).toHaveBeenCalledWith('support');
+
+        expect(screen.getByText('Техподдержка')).toBeInTheDocument();
+        expect(screen.queryByText('Мои заказы')).not.toBeInTheDocument();
     });
 
     test('Кнопка Контакты вызывает onTabChange с contacts', () => {

@@ -8,6 +8,9 @@ jest.mock('../../../../hooks/useOrders', () => ({
     useUserOrders: jest.fn(),
 }));
 
+jest.mock('../../../../components/OrdersIcon/OrdersIcon', () => () => <span>Иконка заказов</span>);
+
+
 describe('OrderHistory', () => {
     const mockOnBack = jest.fn();
 

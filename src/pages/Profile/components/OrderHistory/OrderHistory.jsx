@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../../../components/Button/Button";
 import { useUserOrders } from "../../../../hooks/useOrders";
 import OrderCard from "./OrderCard/OrderCard";
+import OrdersIcon from "../../../../components/OrdersIcon/OrdersIcon";
 import './_order-history.scss';
 
 const OrderHistory = ({ onBack }) => {
@@ -11,6 +12,7 @@ const OrderHistory = ({ onBack }) => {
         return (
             <section className="order-history">
                 <header className="order-history__header">
+                    <OrdersIcon />
                     <h2>Мои заказы</h2>
                 </header>
                 <p className="order-history__loading">Загрузка...</p>
@@ -49,6 +51,7 @@ const OrderHistory = ({ onBack }) => {
     return (
         <section className="order-history">
             <header className="order-history__header">
+                <OrdersIcon />
                 <h2>Мои заказы</h2>
             </header>
 

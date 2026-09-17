@@ -1,0 +1,43 @@
+@import '../../../../../styles/base/variables';
+@import '../../../../../styles/base/typography';
+@import '../../../../../styles/utils/mixins';
+
+
+.support__faq {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-12;
+
+
+    &-item {
+        @include text-16-regular;
+        border: 1px solid $color-coffee;
+        border-radius: $border-radius-15;
+        padding: 16px;
+        background-color: $color-cream;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: $color-coffee;
+    }
+
+    &-question {
+        @include text-16-regular;
+        color: $color-coffee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        background-color: $color-cream;
+        padding: 0;
+    }
+
+    &-answer {
+        @include text-16-regular;
+        color: $color-coffee;
+        display: flex;
+        align-items: center;
+
+        text-align: left;
+    }
+}

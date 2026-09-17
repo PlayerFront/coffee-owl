@@ -21,6 +21,7 @@ jest.mock('../../../../../components/Button/Button', () => {
 
 jest.mock('../../../../../components/EditIcon/EditIcon', () => () => <span>Иконка редактирования</span>);
 jest.mock('../../../../../components/AcceptIcon/AcceptIcon', () => () => <span>Иконка сохранения</span>);
+jest.mock('../../../../../components/SettingsIcon/SettingsIcon', () => () => <span>Иконка настроек</span>);
 
 const defaultUser = {
     name: 'User',

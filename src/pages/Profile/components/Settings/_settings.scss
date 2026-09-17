@@ -13,7 +13,10 @@
     gap: 32px;
 
     &__header {
-        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: $spacing-12;
+        margin-bottom: 24px;
 
         h2 {
             @include text-24-regular;
@@ -101,12 +104,12 @@
         }
     }
 
-    &__input--error {
-       
-    }
+    // &__input--error {
+
+    // }
 
     &__error {
-                @include text-16-regular;
+        @include text-16-regular;
         text-align: left;
         color: $color-coffee;
         transition: 0.2s all;

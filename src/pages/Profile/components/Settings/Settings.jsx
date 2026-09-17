@@ -5,6 +5,7 @@ import { getUserFromStorage } from "../../../../utils/authStorage";
 import EditIcon from "../../../../components/EditIcon/EditIcon";
 import AcceptIcon from "../../../../components/AcceptIcon/AcceptIcon";
 import { useSettingsForm } from "./useSettingsForm";
+import SettingsIcon from "../../../../components/SettingsIcon/SettingsIcon";
 
 const Settings = ({ onBack }) => {
     const {
@@ -27,6 +28,7 @@ const Settings = ({ onBack }) => {
     return (
         <section className="settings">
             <div className="settings__header">
+                <SettingsIcon />
                 <h2>Настройки</h2>
             </div>
 
@@ -137,6 +139,7 @@ const Settings = ({ onBack }) => {
                 </div>
             </div>
 
+            {/* FIXME: почему здесь класс из истории заказов */}
             <div className='order-history__footer'>
                 <Button
                     size='large'

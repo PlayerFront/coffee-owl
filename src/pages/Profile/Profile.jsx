@@ -11,6 +11,7 @@ import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
 import OrderHistory from './components/OrderHistory/OrderHistory';
 import Settings from './components/Settings/Settings';
 import Support from './components/Support/Support';
+import Contacts from './components/Contacts/Contacts';
 
 const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
     const [activeView, setActiveView] = useState(initialView); //'menu'
@@ -38,19 +39,21 @@ const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
         {
             icon: <ContactsIcon />,
             label: 'Контакты',
-            action: () => onTabChange?.('contacts'),
+            action: () => setActiveView('contacts'),
         },
         {
             icon: <LogoutIcon />,
             label: 'Выйти',
             action: () => onLogout(),
         }
+        // Добавить пункт с пользовательским соглашением
     ];
 
     const views = {
         orders: <OrderHistory onBack={() => setActiveView('menu')} />,
         settings: <Settings onBack={() => setActiveView('menu')} />,
         support: <Support onBack={() => setActiveView('menu')} />,
+        contacts: <Contacts onBack={() => setActiveView('menu')}/>,
     };
 
     if (views[activeView]) {

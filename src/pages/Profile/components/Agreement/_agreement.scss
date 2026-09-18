@@ -1,0 +1,53 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.agreement {
+    background-color: $color-cream;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    margin: 0 auto;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-12;
+        margin-bottom: 24px;
+
+        h2 {
+            @include text-24-regular;
+            margin: 0;
+            text-align: left;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-12;
+        text-align: left;
+        padding-bottom: 70px;
+
+        p {
+            @include text-16-regular;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-position: inside;
+        }
+
+        h2 {
+            @include text-16-regular;
+            font-weight: $font-weight-bold;
+            margin: 0;
+            text-align: left;
+        }
+    }
+}

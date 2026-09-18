@@ -7,11 +7,14 @@ import OrdersIcon from '../../components/OrdersIcon/OrdersIcon';
 import SettingsIcon from '../../components/SettingsIcon/SettingsIcon';
 import TechSupportIcon from '../../components/TechSupportIcon/TechSupportIcon';
 import ContactsIcon from '../../components/ContactsIcon/ContactsIcon';
+import AgreementIcon from '../../components/AgreementIcon/AgreementIcon';
 import LogoutIcon from '../../components/LogoutIcon/LogoutIcon';
 import OrderHistory from './components/OrderHistory/OrderHistory';
 import Settings from './components/Settings/Settings';
 import Support from './components/Support/Support';
 import Contacts from './components/Contacts/Contacts';
+import Agreement from './components/Agreement/Agreement';
+
 
 const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
     const [activeView, setActiveView] = useState(initialView); //'menu'
@@ -42,18 +45,23 @@ const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
             action: () => setActiveView('contacts'),
         },
         {
+            icon: <AgreementIcon />,
+            label: 'Пользовательское соглашение',
+            action: () => setActiveView('agreement'),
+        },
+        {
             icon: <LogoutIcon />,
             label: 'Выйти',
             action: () => onLogout(),
-        }
-        // Добавить пункт с пользовательским соглашением
+        },
     ];
 
     const views = {
         orders: <OrderHistory onBack={() => setActiveView('menu')} />,
         settings: <Settings onBack={() => setActiveView('menu')} />,
         support: <Support onBack={() => setActiveView('menu')} />,
-        contacts: <Contacts onBack={() => setActiveView('menu')}/>,
+        contacts: <Contacts onBack={() => setActiveView('menu')} />,
+        agreement: <Agreement onBack={() => setActiveView('menu')} />,
     };
 
     if (views[activeView]) {

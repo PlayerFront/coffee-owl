@@ -6,7 +6,6 @@ import ClockIcon from '../../../../components/ClockIcon/ClockIcon';
 import YandexMap from '../../../../components/YandexMap/YandexMap';
 import ContactsIcon from '../../../../components/ContactsIcon/ContactsIcon';
 
-
 const Contacts = ({ onBack }) => {
     return (
         <section className="contacts">

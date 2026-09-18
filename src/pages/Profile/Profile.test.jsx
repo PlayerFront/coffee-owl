@@ -4,8 +4,6 @@ import '@testing-library/jest-dom';
 import Profile from "./Profile";
 import { getUserFromStorage } from "../../utils/authStorage";
 
-
-
 jest.mock('../../utils/supabaseClient', () => ({
     supabase: {
         from: jest.fn(() => ({
@@ -35,6 +33,7 @@ jest.mock('../../components/CoffeeBeanIcon/CoffeeBeanIcon', () => () => <span>И
 jest.mock('../../components/EditIcon/EditIcon', () => () => <span>Иконка редактирования</span>);
 jest.mock('../../components/LocationIcon/LocationIcon', () => () => <span>Иконка локации</span>);
 jest.mock('../../components/ClockIcon/ClockIcon', () => () => <span>Иконка часов</span>);
+jest.mock('../../components/AgreementIcon/AgreementIcon', () => () => <span>Иконка пользовательского соглашения</span>);
 
 describe('Profile', () => {
     const defaultProps = {

@@ -1,11 +1,12 @@
 import React from 'react';
+import './_home.scss';
+import ComboCarousel from './components/ComboCarousel/ComboCarousel';
 
-const Home = () => {
+const Home = ({ onTabChange }) => {
     return (
-        <div className='home'>
-            <h1>Главная страница</h1>
-            <p>Здесь будут акции и популярные товары</p>
-        </div>
+       <section className='home'>
+            <ComboCarousel onComboClick={(filter) => onTabChange('catalog', { filter })} />
+       </section>
     );
 };
 

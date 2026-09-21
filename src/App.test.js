@@ -13,6 +13,19 @@ jest.mock('./utils/supabaseClient', () => ({
   }
 }));
 
+// jest.mock('swiper/react', () => ({
+//   Swiper: ({ children }) => <div data-testid="swiper">{children}</div>,
+//   SwiperSlide: ({ children }) => <div data-testid="swiper-slide">{children}</div>,
+// }));
+
+// jest.mock('swiper/modules', () => ({
+//   Autoplay: () => null,
+//   Pagination: () => null,
+// }));
+
+// jest.mock('swiper/css', () => ({}));
+// jest.mock('swiper/css/pagination', () => ({}));
+
 test('рендерит App без ошибок', () => {
   const { container } = render(<App />);
   expect(container).toBeInTheDocument();

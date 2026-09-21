@@ -6,7 +6,8 @@ const filters = [
     {id: 'coffee', label: 'Кофе'},
     {id: 'tea', label: 'Чай'},
     {id: 'pastry', label: 'Выпечка'},
-    {id: 'dessert', label: 'Десерты'}
+    {id: 'dessert', label: 'Десерты'},
+    {id: 'combo', label: 'Комбо'},
 ];
 
 const CatalogFilters =  ({ activeFilter, onFilterChange }) => {

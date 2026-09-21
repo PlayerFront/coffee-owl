@@ -16,7 +16,13 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
             <div className='product-card__description'>
                 <h3 className='product-card__name'>{product.name}</h3>
                 <p className='product-card__volume'>{product.volume}</p>
-                <p className='product-card__price'>{product.price} ₽</p>
+                
+                <div className='product-card__price-wrapper'>
+                    {product.oldPrice && (
+                        <span className='product-card__old-price'>{product.oldPrice} ₽</span>
+                    )}
+                    <p className='product-card__price'>{product.price} ₽</p>
+                </div>
             </div>
 
             {quantity === 0 ? (

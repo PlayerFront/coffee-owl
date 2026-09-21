@@ -7,26 +7,28 @@ import Profile from "../../../Profile/Profile";
 import './_tab-content.scss';
 
 const TabContent = ({ activeTab, onTabChange, onLogout }) => {
-    const [profileInitialView, setProfileInitialView] = useState('menu');
 
+    const [profileInitialView, setProfileInitialView] = useState('menu');
+    const [catalogInitialFilter, setCatalogInitialFilter] = useState('all');
+
+    const handleTabChange = (tab, params) => {
+        if (tab === 'profile' && params?.initialView) {
+            setProfileInitialView(params.initialView);
+        }
+        if (tab === 'catalog' && params?.filter) {
+            setCatalogInitialFilter(params.filter);
+        }
+        onTabChange(tab);
+    }
     return (
         <div className='tab-content'>
-            {activeTab === 'home' && <Home />}
-            {activeTab === 'catalog' && <Catalog />}
-            {activeTab === 'cart' && (
-                <Cart
-                    onTabChange={(tab, params) => {
-                        if (tab === 'profile' && params?.initialView) {
-                            setProfileInitialView(params.initialView);
-                        }
-                        onTabChange(tab);
-                    }}
-                />
-            )}
+            {activeTab === 'home' && <Home onTabChange={handleTabChange} />}
+            {activeTab === 'catalog' && <Catalog initialFilter={catalogInitialFilter}/>}
+            {activeTab === 'cart' && <Cart onTabChange={handleTabChange} />}
             {activeTab === 'profile' && (
                 <Profile
                     onLogout={onLogout}
-                    onTabChange={onTabChange}
+                    onTabChange={handleTabChange}
                     initialView={profileInitialView}
                 />
             )}

@@ -80,4 +80,31 @@ export const Products = [
         category: 'pastry',
         image: require('../../assets/images/CatalogPage/ChocolateMaffin.webp')
     },
+    {
+        id: 11,
+        name: 'Чизкейк + Капучино',
+        volume: '1 шт + 220 мл',
+        price: 370,
+        oldPrice: 400,
+        category: 'combo',
+        image: require('../../assets/images/CatalogPage/Combo1.webp')
+    },
+    {
+        id: 12,
+        name: 'Пломбир + Американо',
+        volume: '1 шт + 220 мл',
+        price: 350,
+        oldPrice: 380,
+        category: 'combo',
+        image: require('../../assets/images/CatalogPage/Combo2.webp')
+    },
+    {
+        id: 13,
+        name: 'Шоколадный маффин + Зеленый чай',
+        volume: '1 шт + 220 мл',
+        price: 280,
+        oldPrice: 310,
+        category: 'combo',
+        image: require('../../assets/images/CatalogPage/Combo3.webp')
+    },
 ];

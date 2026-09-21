@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Products } from "./mockData";
 import CatalogFilters from "./components/CatalogFilters/CatalogFilters";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import useCart from "../../utils/useCart";
 import './_catalog.scss';
 
-const Catalog = () => {
+const Catalog = ({ initialFilter = 'all'}) => {
 
-    const [activeFilter, setActiveFilter] = useState('all');
+    const [activeFilter, setActiveFilter] = useState('initialFilter');
     const { getQuantity, addToCart, removeFromCart } = useCart();
+
+    useEffect(() => {
+        setActiveFilter(initialFilter);
+    }, [initialFilter]);
 
     const filteredProducts = activeFilter === 'all'
         ? Products

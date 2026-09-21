@@ -33,6 +33,11 @@
         margin: 0;
     }
 
+    &__old-price {
+        @include text-12-regular;
+        text-decoration: line-through;
+    }
+
     &__price {
         @include text-16-bold;
         margin: 0;

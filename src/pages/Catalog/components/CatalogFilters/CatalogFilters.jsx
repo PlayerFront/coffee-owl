@@ -8,6 +8,7 @@ const filters = [
     {id: 'pastry', label: 'Выпечка'},
     {id: 'dessert', label: 'Десерты'},
     {id: 'combo', label: 'Комбо'},
+    {id: 'seasonal', label: 'Хиты сезона'},
 ];
 
 const CatalogFilters =  ({ activeFilter, onFilterChange }) => {

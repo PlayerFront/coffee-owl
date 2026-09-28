@@ -6,9 +6,6 @@ import MinusIcon from "../../../../components/MinusIcon/MinusIcon";
 import PlusIcon from "../../../../components/PlusIcon/PlusIcon";
 
 const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
-    // const handleAddToCart = () => onUpdate(product.id, 1);
-    // const handleIncrease = () => onUpdate(product.id, quantity + 1);
-    // const handleDecrease = () => onUpdate(product.id, quantity - 1);
 
     return (
         <div className='product-card'>

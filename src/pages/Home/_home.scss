@@ -8,4 +8,9 @@
     overflow-x: hidden;
     height: 100vh;
     height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    padding-bottom: 70px;
 }

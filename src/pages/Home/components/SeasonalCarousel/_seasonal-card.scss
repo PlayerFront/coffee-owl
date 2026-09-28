@@ -1,0 +1,70 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.seasonal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; //????
+    backdrop-filter: blur(25px) opacity(80%);
+    border-radius: $border-radius-15;
+    padding: 12px;
+    height: 250px;
+
+    &__clickable {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        cursor: pointer;
+        flex: 1;
+    }
+
+    &__image {
+        width: 100%;
+        flex: 1;
+        object-fit: cover;
+        border-radius: $border-radius-15;
+        display: block;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    &__name {
+        @include text-16-bold;
+        color: $color-cream;
+        margin: 0;
+        text-align: center;
+        min-height: 38px;
+    }
+
+    &__price {
+        @include text-16-regular;
+        color: $color-cream;
+        margin: 0;
+        text-align: center;
+    }
+
+    &__quantity-control {
+        @include button-primary;
+        @include button-size-small;
+        border: none;
+        border-radius: $border-radius-15;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__quantity-cart {
+        @include text-16-regular;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+}

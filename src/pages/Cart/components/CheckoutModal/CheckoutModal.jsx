@@ -77,8 +77,8 @@ const CheckOutModal = ({ isOpen, onClose, cartItems, total, getQuantity, onTabCh
                         <div className="checkout-modal__success">
                             <AcceptIcon />
                             <h2 className='checkout-modal__title'>Заказ оформлен!</h2>
-                            <p>Номер заказа: <strong>{orderNumber}</strong></p>
-                            <p>Заказ будет готов к <strong>{pickupTime}</strong></p>
+                            <p className="checkout-modal__number">Номер заказа: <b>{orderNumber}</b></p>
+                            <p className="checkout-modal__time">Заказ будет готов к: <b>{pickupTime}</b></p>
                             <p>Ждем вас в Coffee-Owl</p>
                         </div>
                         <div className='checkout-modal__buttons'>

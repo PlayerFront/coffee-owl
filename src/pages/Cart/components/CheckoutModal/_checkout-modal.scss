@@ -16,6 +16,10 @@
     flex-direction: column;
     gap: $spacing-15;
 
+    // &__number, &__time {
+    //     @include text-16-regular;
+    // }
+
     &__overlay {
         position: fixed;
         top: 0;
@@ -75,7 +79,7 @@
         font-size: 16px;
 
         input {
-            display: none; // скрываем стандартный radio
+            display: none;
         }
 
         &-custom {
@@ -174,9 +178,8 @@
         }
 
         p {
+            @include text-16-regular;
             margin: 4px 0;
-            font-size: 14px;
-            color: $color-coffee;
         }
 
         strong {

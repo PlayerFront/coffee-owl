@@ -1,8 +1,10 @@
 import React from 'react';
 import './_home.scss';
+import useCart from '../../utils/useCart';
 import ComboCarousel from './components/ComboCarousel/ComboCarousel';
 import SeasonalCarousel from './components/SeasonalCarousel/SeasonalCarousel';
-import useCart from '../../utils/useCart';
+import CoffeeLoad from './components/CoffeeLoad/CoffeeLoad';
+
 
 const Home = ({ onTabChange }) => {
     const { addToCart, getQuantity, removeFromCart } = useCart();
@@ -16,6 +18,7 @@ const Home = ({ onTabChange }) => {
                 onRemoveFromCart={removeFromCart}
                 getQuantity={getQuantity}
             />
+            <CoffeeLoad />
        </section>
     );
 };

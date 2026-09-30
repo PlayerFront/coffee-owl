@@ -82,4 +82,4 @@ describe('Seasonal Carousel component', () => {
         expect(calledIds).toContain(103);
         expect(calledIds).toContain(104);
     });
-})
+});

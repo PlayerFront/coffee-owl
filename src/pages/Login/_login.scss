@@ -101,4 +101,14 @@
         text-decoration: underline;
         padding: 0;
     }
+
+    &__register-link {
+        @include text-16-regular;
+        background: none;
+        border: none;
+        color: $color-coffee;
+        text-decoration: underline;
+        padding: 0;
+        display: inline;
+    }
 }

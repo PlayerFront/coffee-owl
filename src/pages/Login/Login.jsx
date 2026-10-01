@@ -56,9 +56,6 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
         }
     }
 
-    console.log("Form errors:", errors);
-    console.log("Form validity:", isValid); // ДЛЯ ОТЛАДКИ
-
     return (
         <section className='login' id='login'>
             <div className='login__container'>

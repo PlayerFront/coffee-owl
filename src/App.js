@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import RegisterStep1 from './pages/Register/RegisterStep1';
 import PhoneCode from './pages/PhoneCode/PhoneCode';
 import Catalog from './pages/Catalog/Catalog';
-import { isUserAuthenticated, saveUserToStorage } from './utils/authStorage';
+import { isUserAuthenticated, saveUserToStorage, removeUserFromStorage, removeSession } from './utils/authStorage';
 import { verifyCode, resendCode } from './api/authApi';
 import Main from './pages/Main/Main';
 
@@ -20,10 +20,9 @@ function App() {
     }
   }, []);
 
-
-  // TODO: функция нужна для выхода из профиля
   const handleLogout = () => {
-    localStorage.removeItem('coffee-owl-user');
+    removeUserFromStorage();
+    removeSession();
     setUser(null);
     setCurrentPage('start')
   }

@@ -31,6 +31,10 @@ export const removeUserFromStorage = () => {
     }
 };
 
+export const removeSession = () => {
+    localStorage.removeItem(SESSION_KEY);
+};
+
 export const isUserAuthenticated = () => {
     const user = getUserFromStorage();
     return user && user.is_verified === true;

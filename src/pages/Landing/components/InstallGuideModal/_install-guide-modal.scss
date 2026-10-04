@@ -1,0 +1,80 @@
+@import '../../../../styles/base/variables';
+@import '../../../../styles/base/typography';
+@import '../../../../styles/utils/mixins';
+
+.install-guide {
+    position: fixed;
+    inset: 0;
+    background: rgba(61, 34, 13, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+
+    &__content {
+        background: $color-cream;
+        border-radius: $border-radius-15;
+        padding: 60px 20px;
+        max-width: 360px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-15;
+    }
+
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 12px;
+        background: none;
+        border: none;
+        display: flex;
+    }
+
+    &__title {
+        @include text-16-bold;
+        color: $color-coffee;
+        margin: 0;
+        text-align: center;
+    }
+
+    &__steps {
+        list-style: decimal inside;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__step {
+        @include text-16-regular;
+        gap: 12px;
+        text-align: left;
+        color: $color-coffee;
+    }
+
+    &__step-number {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: $color-coffee;
+        color: $color-cream;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include text-16-regular;
+    }
+
+    &__note {
+        @include text-16-regular;
+        color: $color-coffee;
+        text-align: center;
+        margin: 0;
+        padding-top: 16px;
+        border-top: 1px solid rgba(61, 34, 13, 0.1);
+    }
+}

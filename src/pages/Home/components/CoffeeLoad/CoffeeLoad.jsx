@@ -45,7 +45,7 @@ const CoffeeLoad = () => {
                             style={{ height: `${item.value * 20}px` }}
                         >
                         </div>
-                        <span className="coffee-load__hours">{item.hour}</span>
+                        <span className={`coffee-load__hours ${item.hour === currentHour ? 'coffee-load__hours--active' : ''}`}>{item.hour}</span>
                     </div>
                 ))}
             </div>

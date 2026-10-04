@@ -51,6 +51,10 @@
         @include text-12-regular;
         color: $color-coffee;
         margin-bottom: 12px;
+
+        &--active {
+            font-weight: 700;
+        }
     }
 
     &__status {

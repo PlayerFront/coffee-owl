@@ -21,6 +21,7 @@
 
         h2 {
             @include text-24-regular;
+            color: $color-coffee;
             margin: 0;
         }
     }

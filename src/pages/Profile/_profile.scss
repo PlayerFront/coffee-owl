@@ -11,6 +11,7 @@
     gap: 56px;
     width: 100%;
     padding-bottom: 70px;
+    color: $color-coffee;
 
     &__header {
         display: flex;
@@ -59,7 +60,9 @@
         background: $color-cream;
         gap: 5px;
         width: 100%;
-        padding: 0;
+        padding: 8px;
+        color: $color-coffee;
+        border-bottom: 1px solid rgba(61, 34, 13, 0.08);
     }
 
     &__menu-icon {

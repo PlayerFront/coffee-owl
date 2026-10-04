@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Landing from './pages/Landing/Landing';
 import Start from './pages/Start/Start';
 import Login from './pages/Login/Login';
 import RegisterStep1 from './pages/Register/RegisterStep1';
 import PhoneCode from './pages/PhoneCode/PhoneCode';
-import Catalog from './pages/Catalog/Catalog';
 import { isUserAuthenticated, saveUserToStorage, removeUserFromStorage, removeSession } from './utils/authStorage';
 import { verifyCode, resendCode } from './api/authApi';
 import Main from './pages/Main/Main';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('start');
+  const [currentPage, setCurrentPage] = useState('landing');
   const [phoneForVerification, setPhoneForVerification] = useState('');
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (isUserAuthenticated()) {
@@ -23,17 +22,13 @@ function App() {
   const handleLogout = () => {
     removeUserFromStorage();
     removeSession();
-    setUser(null);
     setCurrentPage('start')
   }
 
-  const handleAuthSuccess = (userData) => {
-    setUser(userData);
-    setCurrentPage('main');
-  };
-
   const renderPage = () => {
     switch (currentPage) {
+      case 'landing':
+        return <Landing onOpen={() => setCurrentPage('start')} />;
       case 'start':
         return <Start onNavigate={setCurrentPage} />;
       case 'login':
@@ -70,7 +65,8 @@ function App() {
       case 'main':
         return <Main onLogout={handleLogout}/>
       default:
-        return <Start onNavigate={setCurrentPage} />;
+        return <Landing />;
+        //  onInstall={() => setCurrentPage('start')}
     }
   };
 
@@ -82,3 +78,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import useCart from '../../utils/useCart';
+// import useCart from '../../utils/useCart';
+import { useCartContext } from '../../context/CartContext';
 import { Products } from '../Catalog/mockData';
 import CartItem from './components/CartItem/CartItem';
 import Button from '../../components/Button/Button';
@@ -13,7 +14,7 @@ const Cart = ({ onTabChange }) => {
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false); 
 
-    const { getQuantity, addToCart, removeFromCart, clearCart } = useCart();
+    const { getQuantity, addToCart, removeFromCart, clearCart } = useCartContext();
 
     const cartItems = Products.filter(product => getQuantity(product.id) > 0);
     const totalItems = cartItems.reduce((sum, product) => {

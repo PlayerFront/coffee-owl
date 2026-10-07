@@ -1,9 +1,10 @@
 import React from "react";
-import { render, screen, fireEvent, getAllByTestId } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { useCartContext } from "../../context/CartContext";
 import userEvent from "@testing-library/user-event";
 import Cart from "./Cart";
 import useCart from "../../utils/useCart";
-import { Products } from "../Catalog/mockData";
+
 
 jest.mock('../../utils/supabaseClient', () => ({
     supabase: {
@@ -16,11 +17,11 @@ jest.mock('../../utils/supabaseClient', () => ({
     },
 }));
 
-jest.mock('../../utils/useCart');
+jest.mock('../../context/CartContext');
 jest.mock('../Catalog/mockData', () => ({
     Products: [
-        { id: 1, name: 'Капучино', volume: '220 мл', price: 220, category: 'coffee', image: 'cappuccino.jpg'},
-        { id: 2, name: 'Круассан', volume: '120 гр', price: 150, category: 'pastry', image: 'croissant.jpg'}
+        { id: 1, name: 'Капучино', volume: '220 мл', price: 220, category: 'coffee', image: 'cappuccino.jpg' },
+        { id: 2, name: 'Круассан', volume: '120 гр', price: 150, category: 'pastry', image: 'croissant.jpg' }
     ]
 }));
 
@@ -31,7 +32,7 @@ jest.mock('../../components/CartIcon/CartIcon', () => ({
 
 jest.mock('../../components/Button/Button', () => ({
     __esModule: true,
-    default: ({ children, onClick, variant, size}) => (
+    default: ({ children, onClick, variant, size }) => (
         <button onClick={onClick} data-testid={`button--${variant} button--${size}`}>
             {children}
         </button>
@@ -57,13 +58,20 @@ describe('Cart Component', () => {
     const mockGetTotalPrice = jest.fn();
 
     beforeEach(() => {
-        jest.clearAllMocks();
+        useCartContext.mockReturnValue({
+            cart: { 1: 2 },
+            getQuantity: jest.fn(() => 2),
+            getTotalItems: jest.fn(() => 2),
+            addToCart: jest.fn(),
+            removeFromCart: jest.fn(),
+            clearCart: jest.fn(),
+        });
     });
 
     test('Отображается пустая корзина, а кнопка "Перейти в каталог" вызывает onTabChange', async () => {
         const user = userEvent.setup({ delay: null });
         mockGetTotalItems.mockReturnValue(0);
-        useCart.mockReturnValue({
+        useCartContext.mockReturnValue({
             cart: {},
             getQuantity: mockGetQuantity,
             getTotalItems: mockGetTotalItems
@@ -85,7 +93,7 @@ describe('Cart Component', () => {
             if (id === 2) return 1; // Croissant ID
         });
 
-        useCart.mockReturnValue({
+        useCartContext.mockReturnValue({
             cart: { 1: 2, 2: 1 },
             getQuantity: mockGetQuantity,
             getTotalItems: mockGetTotalItems,

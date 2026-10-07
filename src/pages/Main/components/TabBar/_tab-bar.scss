@@ -35,4 +35,27 @@
             border-bottom: 2px solid $color-cream;
         }
     }
+
+    &__icon-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__badge {
+        @include text-12-regular;
+        position: absolute;
+        top: -7px;
+        right: -14px;
+        height: 16px;
+        min-width: 16px;
+        background-color:$color-cream;
+        color: $color-coffee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
 }

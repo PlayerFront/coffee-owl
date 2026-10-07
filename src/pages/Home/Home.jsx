@@ -1,6 +1,7 @@
 import React from 'react';
 import './_home.scss';
-import useCart from '../../utils/useCart';
+// import useCart from '../../utils/useCart';
+import { useCartContext } from '../../context/CartContext';
 import SearchBar from './components/SearchBar/SearchBar';
 import ComboCarousel from './components/ComboCarousel/ComboCarousel';
 import SeasonalCarousel from './components/SeasonalCarousel/SeasonalCarousel';
@@ -8,7 +9,7 @@ import CoffeeLoad from './components/CoffeeLoad/CoffeeLoad';
 
 
 const Home = ({ onTabChange }) => {
-    const { addToCart, getQuantity, removeFromCart } = useCart();
+    const { addToCart, getQuantity, removeFromCart } = useCartContext();
 
     return (
         <section className='home'>

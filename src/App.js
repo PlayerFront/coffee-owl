@@ -43,7 +43,6 @@ function App() {
         return <RegisterStep1
           onNavigate={setCurrentPage}
           onPhoneSubmit={(phone) => {
-            console.log("Телефон для подтверждения:", phone); // отладка
             setPhoneForVerification(phone);
             setCurrentPage('phone-code')
           }}
@@ -66,7 +65,6 @@ function App() {
         return <Main onLogout={handleLogout}/>
       default:
         return <Landing />;
-        //  onInstall={() => setCurrentPage('start')}
     }
   };
 

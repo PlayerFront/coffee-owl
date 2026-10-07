@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TabBar from "./TabBar";
 import './_tab-bar.scss';
+import { CartProvider } from "../../../../context/CartContext";
 
 jest.mock('../../../../components/HomeIcon/HomeIcon', () => ({
     __esModule: true,
@@ -36,12 +37,20 @@ describe('TabBar component', () => {
         onTabChange: mockOnTabChange
     }
 
+    const renderTabBar = (props = {}) => {
+        return render(
+            <CartProvider>
+                <TabBar {...defaultProps} {...props} />
+            </CartProvider>
+        );
+    };
+
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
     test('Рендерятся все 4 вкладки с исконками и названиями', () => {
-        render(<TabBar {...defaultProps} />)
+        renderTabBar();
 
         expect(screen.getByText('Главная')).toBeInTheDocument();
         expect(screen.getByText('Каталог')).toBeInTheDocument();
@@ -55,7 +64,7 @@ describe('TabBar component', () => {
     });
 
     test('Подсвечивает активную вкладку', () => {
-        render(<TabBar {...defaultProps} activeTab='catalog' />);
+        renderTabBar({ activeTab: 'catalog' });
 
         const catalogButton = screen.getByText('Каталог').closest('button');
         const homeButton = screen.getByText('Главная').closest('button');
@@ -66,7 +75,7 @@ describe('TabBar component', () => {
 
     test('Вызывает onTabChange с правильным id при клике', async () => {
         const user = userEvent.setup({ delay: null });
-        render(<TabBar {...defaultProps} />);
+        renderTabBar();
 
         await user.click(screen.getByText('Каталог'));
         expect(mockOnTabChange).toHaveBeenCalledWith('catalog');
@@ -76,7 +85,8 @@ describe('TabBar component', () => {
     });
 
     test('Иконки получают пропс active корректно', () => {
-        render(<TabBar {...defaultProps} activeTab='profile' />);
+        renderTabBar({ activeTab: 'profile' });
+
 
         expect(screen.getByTestId('profile-icon')).toHaveAttribute('data-active', 'true');
 
@@ -86,7 +96,7 @@ describe('TabBar component', () => {
     });
 
     test('Все кнопки имеют правильные классы и структуру', () => {
-        render(<TabBar {...defaultProps} />);
+        renderTabBar();
 
         const buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(4);
@@ -97,4 +107,4 @@ describe('TabBar component', () => {
             expect(button.querySelector('.tab-bar__label')).toBeInTheDocument();
         });
     });
-})
+});

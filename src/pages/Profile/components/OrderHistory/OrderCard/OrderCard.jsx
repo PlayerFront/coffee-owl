@@ -4,7 +4,23 @@ import './_order-card.scss';
 
 const OrderCard = ({ order }) => {
 
-    const { display_id: displayId, status, items, pickup_time: pickUpTime, total_price: totalPrice } = order;
+    const { 
+        display_id: displayId, 
+        status, 
+        items, 
+        pickup_time: pickUpTime, 
+        total_price: totalPrice,
+        created_at: createdAt,
+     } = order;
+
+    const formatDate = (isoString) => {
+        if (!isoString) return '';
+        return new Date(isoString).toLocaleDateString('ru-RU', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        });
+    };
 
     return (
         <div className='order-card'>
@@ -24,6 +40,7 @@ const OrderCard = ({ order }) => {
                         </div>
 
                         <div className='order-card__bottom'>
+                            <span className='order-card__date'>{formatDate(createdAt)}</span>
                             <span className='order-card__time'>{pickUpTime.slice(0, 5)}</span>
                             <span className='order-card__total'>{totalPrice} ₽</span>
                         </div>

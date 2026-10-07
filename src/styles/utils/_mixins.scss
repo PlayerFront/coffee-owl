@@ -1,4 +1,5 @@
 @import '../base/variables';
+
 @mixin input-borders {
     border: 1px solid $color-coffee;
     border-radius: $border-radius-15;
@@ -6,11 +7,14 @@
 
 @mixin interactive-element {
     cursor: pointer;
-    transition: all 0.2s;
+    // transition: all 0.3s;
+    transition: transform 0.1s ease, opacity 0.15s ease;
     user-select: none;
 
     &:active {
-        opacity: 0.8;
+        // opacity: 0.8;
+        transform: scale(0.93);
+        opacity: 0.7;
     }
 
     &--disabled {
@@ -37,4 +41,13 @@
 
 @mixin button-size-small {
     padding: 7.5px 10px;
+}
+
+@mixin button-press {
+    transition: transform 0.1 ease, opacity 0.15s ease;
+
+    &:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
 }

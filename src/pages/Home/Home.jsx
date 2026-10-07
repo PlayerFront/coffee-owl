@@ -6,6 +6,9 @@ import SearchBar from './components/SearchBar/SearchBar';
 import ComboCarousel from './components/ComboCarousel/ComboCarousel';
 import SeasonalCarousel from './components/SeasonalCarousel/SeasonalCarousel';
 import CoffeeLoad from './components/CoffeeLoad/CoffeeLoad';
+import LocationIcon from '../../components/LocationIcon/LocationIcon';
+import CafeInfo from './components/CafeInfo/CafeInfo';
+
 
 
 const Home = ({ onTabChange }) => {
@@ -18,6 +21,7 @@ const Home = ({ onTabChange }) => {
                 onAddToCart={addToCart}
                 getQuantity={getQuantity}
             />
+            <CafeInfo />
             <ComboCarousel onComboClick={(filter) => onTabChange('catalog', { filter })} />
             <SeasonalCarousel
                 onSeasonalClick={() => onTabChange('catalog', { filter: 'seasonal' })}

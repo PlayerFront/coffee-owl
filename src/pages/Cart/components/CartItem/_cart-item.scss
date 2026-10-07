@@ -38,6 +38,7 @@
     }
 
     &__control-btn {
+        @include interactive-element;
         border-radius: $border-radius-15;
         outline: none;
         width: 32px;

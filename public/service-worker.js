@@ -1,4 +1,4 @@
-const CACHE_NAME = 'coffee-owl-cache-v1';
+const CACHE_NAME = 'coffee-owl-cache-v2';
 
 const ASSETS_TO_CACHE = [
     '/',
@@ -13,7 +13,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-self.addEventListener('active', (event) => {
+self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(

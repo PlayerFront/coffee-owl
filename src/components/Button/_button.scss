@@ -4,9 +4,9 @@
 
 .button {
     @include text-16-regular;
+    @include interactive-element;
     border: none;
     border-radius: $border-radius-15;
-    @include interactive-element;
     width: 100%;
     text-align: center;
 
@@ -25,35 +25,4 @@
     &--small {
         @include button-size-small;
     }
-
-    // &:active {
-    //     opacity: 0.8;
-    // }
-
-    // &--disabled {
-    //     opacity: 0.5;
-    //     cursor: not-allowed;
-    // }
-
-    // &--primary {
-    //     background-color: $color-coffee;
-    //     color: $color-cream;
-
-    // }
-
-    // &--secondary {
-    //     background-color: $color-cream;
-    //     color: $color-coffee;
-    //     border: 1px solid $color-coffee;
-
-    // }
-
-    // &--large {
-    //     padding: 14.5px 0;
-    //     min-height: 44px;
-    // }
-
-    // &--small {
-    //     padding: 7.5px 0;
-    // }
 }

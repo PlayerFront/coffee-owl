@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './_combo-carousel.scss';
 import ComboIcon from "../../../../components/ComboIcon/ComboIcon";
-
 import Combo1 from '../../../../assets/images/HomePage/Combo1.webp';
 import Combo2 from '../../../../assets/images/HomePage/Combo2.webp';
 import Combo3 from '../../../../assets/images/HomePage/Combo3.webp';
@@ -14,16 +13,6 @@ import Combo3 from '../../../../assets/images/HomePage/Combo3.webp';
 const combos = [Combo1, Combo2, Combo3];
 
 const ComboCarousel = ({ onComboClick }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % combos.length);
-        }, 3000);
-
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <section className="combo-carousel">
             <header className="combo-carousel__header">

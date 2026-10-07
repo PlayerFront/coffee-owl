@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import './_phone-code.scss';
 import Button from "../../components/Button/Button";
-import { verifyCode, resendCode } from '../../api/authApi';
+import { resendCode } from '../../api/authApi';
 
 const PhoneCode = ({
     phone,
@@ -34,7 +34,7 @@ const PhoneCode = ({
 
         if (newCode.every(digit => digit !== '') && index === 3) {
             handleSubmit(newCode.join(''));
-        } // нужный АВТОсабмит, если пользователь ввел все цифры
+        }
     };
 
     const handleKeyDown = (index, e) => {
@@ -47,7 +47,7 @@ const PhoneCode = ({
         }
 
         if (e.key === 'ArrowRight' && index < 3) {
-            inputRefs[index + 1].current.focus(); // нужные нам стрелки для навигации
+            inputRefs[index + 1].current.focus();
         }
     }
 
@@ -86,6 +86,7 @@ const PhoneCode = ({
 
     useEffect(() => {
         inputRefs[0].current.focus();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSubmit = async (fullCode) => {
@@ -98,9 +99,6 @@ const PhoneCode = ({
             setIsLoading(true);
             setError('');
 
-            // const result = await verifyCode(phone, fullCode);
-            // console.log('Успешная регистрация', result.user);
-
             if (onCodeSubmit) {
                 await onCodeSubmit(fullCode);
             }
@@ -109,7 +107,6 @@ const PhoneCode = ({
             setError('Неверный код. Попробуйте еще раз');
             setCode(['', '', '', '']);
             inputRefs[0].current.focus();
-            // throw error;
         } finally {
             setIsLoading(false);
         }

@@ -1,7 +1,6 @@
 import React from "react";
 import './_settings.scss';
 import Button from "../../../../components/Button/Button";
-import { getUserFromStorage } from "../../../../utils/authStorage";
 import EditIcon from "../../../../components/EditIcon/EditIcon";
 import AcceptIcon from "../../../../components/AcceptIcon/AcceptIcon";
 import { useSettingsForm } from "./useSettingsForm";
@@ -17,7 +16,6 @@ const Settings = ({ onBack }) => {
         setError,
         startEdit,
         saveEdit,
-        cancelEdit,
     } = useSettingsForm();
 
     const isEditing = editingField !== null;
@@ -138,9 +136,7 @@ const Settings = ({ onBack }) => {
                     </div>
                 </div>
             </div>
-
-            {/* FIXME: почему здесь класс из истории заказов */}
-            <div className='order-history__footer'>
+            <div className='settings__footer'>
                 <Button
                     size='large'
                     variant='secondary'

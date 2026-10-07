@@ -9,11 +9,11 @@ import CheckOutModal from './components/CheckoutModal/CheckoutModal';
 
 const Cart = ({ onTabChange }) => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false); // для модалки
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false); 
 
-    const { cart, getQuantity, addToCart, removeFromCart, clearCart } = useCart();
+    const { getQuantity, addToCart, removeFromCart, clearCart } = useCart();
 
     const cartItems = Products.filter(product => getQuantity(product.id) > 0);
     const totalItems = cartItems.reduce((sum, product) => {

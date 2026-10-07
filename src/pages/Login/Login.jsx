@@ -9,13 +9,9 @@ import BackButton from "../../components/BackButton/BackButton";
 
 const Login = ({ onNavigate, onPhoneSubmit }) => {
 
-    const handleClickBack = () => {
-        onNavigate('start');
-    } // кнопка для верстки
-
-    const [isLoading, setIsLoading] = useState(false); // для кнопки загрузки
-    const [error, setError] = useState(null); // для показа ошибок
-    const [showPolicyModal, setShowPolicyModal] = useState(false); // политика конфиденциальности
+    const [isLoading, setIsLoading] = useState(false); 
+    const [error, setError] = useState(null);
+    const [showPolicyModal, setShowPolicyModal] = useState(false);
 
     const {
         register,
@@ -43,7 +39,7 @@ const Login = ({ onNavigate, onPhoneSubmit }) => {
                 : `+7${cleanPhone}`;
 
 
-            const result = await loginUser(formattedPhone);
+            await loginUser(formattedPhone);
 
             if (onPhoneSubmit) {
                 onPhoneSubmit(formattedPhone)

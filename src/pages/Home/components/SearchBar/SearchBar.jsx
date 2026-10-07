@@ -46,11 +46,6 @@ const SearchBar = ({ onSelectProduct, onAddToCart, getQuantity }) => {
         )
         : [];
 
-    const handleSelect = (product) => {
-        setIsOpen(false);
-        onSelectProduct(product);
-    }
-
     return (
         <div className="search-bar" ref={searchRef}>
             <div className="search-bar__field">

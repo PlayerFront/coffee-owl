@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from '../../components/Button/Button'; // кнопка выйти
 import './_profile.scss';
 import { getUserFromStorage } from '../../utils/authStorage';
 import AvatarIcon from '../../components/AvatarIcon/AvatarIcon';
@@ -17,7 +16,7 @@ import Agreement from './components/Agreement/Agreement';
 
 
 const Profile = ({ onLogout, onTabChange, initialView = 'menu' }) => {
-    const [activeView, setActiveView] = useState(initialView); //'menu'
+    const [activeView, setActiveView] = useState(initialView);
 
     const user = getUserFromStorage();
     const phone = user?.phone;

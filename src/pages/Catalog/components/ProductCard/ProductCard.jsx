@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../../../components/Button/Button";
 import CartIcon from "../../../../components/CartIcon/CartIcon";
 import './_product-card.scss';

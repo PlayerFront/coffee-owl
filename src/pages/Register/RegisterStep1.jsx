@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-//FIXME: значение Contoller не используется в документе
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { registerUser } from "../../api/authApi";
 import './_register-step1.scss';
 import Button from "../../components/Button/Button";
@@ -18,7 +17,6 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
     const {
         register,
         handleSubmit,
-        control, //FIXME: значение control не используется в документе
         formState: { errors, isValid },
         watch
     } = useForm({
@@ -131,7 +129,7 @@ const RegisterStep1 = ({ onNavigate, onPhoneSubmit }) => {
                             {...register("email", {
                                 required: 'Эл. почта обязательна',
                                 pattern: {
-                                    value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                                    value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i,
                                     message: 'Некорректный адрес эл. почты'
                                 }
                             })}

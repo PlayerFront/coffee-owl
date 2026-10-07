@@ -43,7 +43,7 @@ export const useSettingsForm = () => {
     const saveEdit = async () => {
         if (editingField && user?.id) {
             if (editingField === 'email' && draftValue.trim()) {
-                const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                const emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
                 if (!emailRegex.test(draftValue.trim())) {
                     setError('Некорректный адрес эл. почты');
                     return;

@@ -13,6 +13,7 @@
     h1 {
         @include text-24-regular;
         text-align: left;
+        color: $color-coffee;
     }
 
     &--empty {
@@ -39,6 +40,7 @@
 
     &__empty-text {
         @include text-24-regular;
+        color: $color-coffee;
     }
 
     &__empty-footer {
@@ -54,11 +56,10 @@
     }
 
     &__footer {
-        // FIXME: исправить зазор
         position: sticky;
         bottom: 0;
         background: inherit;
-        border-top: 1px solid $color-coffee; // !!!!
+        border-top: 1px solid $color-coffee;
         padding: 16px 0 80px 0;
     }
 
@@ -67,5 +68,6 @@
         justify-content: space-between;
         @include text-16-bold;
         margin-bottom: 16px;
+        color: $color-coffee;
     }
 }

@@ -43,7 +43,14 @@ const OrderHistory = ({ onBack }) => {
                     <h2>Мои заказы</h2>
                 </header>
                 <p className="order-history__empty">У вас пока нет заказов</p>
-                <Button onClick={onBack}>Назад</Button>
+                <div className='order-history__footer'>
+                    <Button
+                        size='large'
+                        variant='secondary'
+                        onClick={onBack}
+                    >
+                        Назад</Button>
+                </div>
             </section>
         );
     }

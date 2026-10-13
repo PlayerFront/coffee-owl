@@ -167,9 +167,9 @@ const CheckOutModal = ({ isOpen, onClose, cartItems, total, getQuantity, onTabCh
                                 ))}
                             </select>
                             {getAvailableTimes().length === 0 && (
-                                <p className="checkout-modal__hint">
+                                <span className="checkout-modal__hint">
                                     Сегодня заказы больше не принимаются. Попробуйте завтра с 9:00.
-                                </p>
+                                </span>
                             )}
                         </div>
 
@@ -180,13 +180,13 @@ const CheckOutModal = ({ isOpen, onClose, cartItems, total, getQuantity, onTabCh
                             </div>
                             {cartItems.map(product => (
                                 <div key={product.id} className='checkout-modal__item'>
-                                    <span> {product.name} x {getQuantity(product.id)} </span>
-                                    <span> {product.price * getQuantity(product.id)} ₽ </span>
+                                    <p> {product.name} x {getQuantity(product.id)} </p>
+                                    <p> {product.price * getQuantity(product.id)} ₽ </p>
                                 </div>
                             ))}
                             <div className='checkout-modal__total'>
-                                <span>Итого:</span>
-                                <span>{total} ₽ </span>
+                                <p>Итого:</p>
+                                <p>{total} ₽</p>
                             </div>
                         </div>
 

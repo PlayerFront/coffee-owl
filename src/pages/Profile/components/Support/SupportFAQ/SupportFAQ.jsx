@@ -46,7 +46,6 @@ const SupportFAQ = ({ onBack }) => {
                         >
                             <span>{item.question}</span>
                             <span className="support__faq-icon">
-                                {/* {openIndex === index ? '▲' : '▼'} */}
                                 <CoffeeBeanIcon />
                             </span>
                         </button>

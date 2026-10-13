@@ -24,10 +24,12 @@
 
     &__name {
         @include text-16-bold;
+        color: $color-coffee;
     }
 
     &__volume {
         @include text-16-italic;
+        color: $color-coffee;
     }
 
     &__controls {
@@ -53,10 +55,12 @@
     &__quantity {
         @include text-16-regular;
         text-align: center;
+        color: $color-coffee;
     }
 
     &__price {
         @include text-16-bold;
         white-space: nowrap;
+        color: $color-coffee;
     }
 }

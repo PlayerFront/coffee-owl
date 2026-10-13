@@ -17,7 +17,9 @@
     left: 0;
     right: 0;
     z-index: 100;
-
+    max-width: 480px;
+    margin: 0 auto;
+    
     &__button {
         @include text-16-regular;
         color: $color-cream;
@@ -50,7 +52,7 @@
         right: -14px;
         height: 16px;
         min-width: 16px;
-        background-color:$color-cream;
+        background-color: $color-cream;
         color: $color-coffee;
         border-radius: 50%;
         display: flex;

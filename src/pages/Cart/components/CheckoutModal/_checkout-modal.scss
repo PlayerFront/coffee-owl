@@ -44,23 +44,31 @@
         @include text-24-regular;
         font-weight: bold;
         margin: 0;
+        color: $color-coffee;
     }
 
     &__section {
         text-align: left;
-        margin-bottom: 24px;
         padding-bottom: 16px;
         border-bottom: 1px solid rgba($color-coffee, 0.2);
 
         h3 {
             @include text-16-regular;
             margin-bottom: 12px;
+            color: $color-coffee;
         }
 
         label {
             display: block;
             margin: 8px 0;
             cursor: pointer;
+            color: $color-coffee;
+        }
+
+        p {
+            @include text-16-regular;
+            color: $color-coffee;
+            margin: 8px 0;
         }
     }
 
@@ -129,7 +137,7 @@
         padding: 14px 16px;
         border: 1px solid $color-coffee;
         border-radius: 12px;
-        
+        color: $color-coffee;
         background-color: $color-cream;
         appearance: none;
         -webkit-appearance: none;
@@ -141,13 +149,12 @@
     }
 
     &__hint {
+        @include text-12-regular;
         margin-top: 8px;
-        font-size: 13px;
         color: #9A7B5C;
         text-align: center;
     }
 
-    // Ошибка отправки
     &__error {
         margin-bottom: 16px;
         padding: 12px;
@@ -169,17 +176,19 @@
         svg {
             width: 64px;
             height: 64px;
-            margin-bottom: 16px; //!!!!!!!!!!!!!!
+            margin-bottom: 16px;
         }
 
         h2 {
             margin: 0 0 12px;
             font-size: 20px;
+            color: $color-coffee;
         }
 
         p {
             @include text-16-regular;
             margin: 4px 0;
+            color: $color-coffee;
         }
 
         strong {

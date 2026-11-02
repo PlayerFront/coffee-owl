@@ -1,115 +1,112 @@
 # Coffee Owl
 
-PWA-приложение кофейни для заказа кофе без очереди.
+PWA coffee shop app for ordering coffee without waiting in line.
 
-## 🔗 Ссылки
+## Links
 
-- [Демо на Vercel](https://coffee-owl-peach.vercel.app/)
-- [Репозиторий на GitHub](https://github.com/PlayerFront/coffee-owl)
+- [Demo on Vercel](https://coffee-owl-peach.vercel.app/)
+- [GitHub Repository](https://github.com/PlayerFront/coffee-owl)
 
-## О проекте
+## About the project
 
-Coffee Owl — это прогрессивное веб-приложение (PWA), которое позволяет:
-- Заказать кофе и десерты за 30 секунд
-- Выбрать удобное время получения
-- Просматривать историю заказов
-- Установить приложение на телефон как нативное
+Coffee Owl is a Progressive Web App (PWA) that allows you to:
+- Order coffee and desserts in 30 seconds
+- Choose a convenient pickup time
+- View order history
+- Install the app on your phone like a native app
 
-## Скриншоты
-![Главная](/screenshots/screenshot-Home.png)
-![Каталог](/screenshots/screenshot-Catalog.png)
-![Корзина](/screenshots/screenshot-Cart.png)
-![Профиль](/screenshots/screenshot-Profile.png)
+## Screenshots
+<img src="./screenshots/screenshot-Home.png" alt="Coffee Owl Home page" width="300" /> <img src="./screenshots/screenshot-Catalog.png" alt="Coffee Owl Catalog page" width="300" /> <img src="./screenshots/screenshot-Cart.png" alt="Coffee Owl Cart page" width="300" /> <img src="./screenshots/screenshot-Profile.png" alt="Coffee Owl Profile page" width="300" />
 
-## Стек
+## Tech Stack
 
-- **React 19** — UI-библиотека
-- **JavaScript** — язык
-- **SCSS** — стилизация (БЭМ)
-- **Supabase** — база данных и аутентификация
-- **Swiper.js** — карусели
-- **React Hook Form** — формы
-- **Jest + React Testing Library** — тесты
-- **PWA** — Service Worker, установка на телефон
-- **Vercel** — деплой
+- **React 19** — UI library
+- **JavaScript** — language
+- **SCSS** — styling (BEM)
+- **Supabase** — database and authentication
+- **Swiper.js** — carousels
+- **React Hook Form** — forms
+- **Jest + React Testing Library** — tests
+- **PWA** — Service Worker, phone installation
+- **Vercel** — deployment
 
-## Функционал
+## Features
 
-### Авторизация
-- Вход и регистрация по номеру телефона
-- Подтверждение кода (имитация SMS: код `1234` выводится в консоль)
-- Валидация форм
-- Сохранение сессии
+### Authentication
+- Sign in and sign up by phone number
+- Code confirmation (SMS simulation: code `1234` is printed to the console)
+- Form validation
+- Session persistence
 
-### Каталог
-- Товары с фильтрами (Кофе / Чай / Выпечка / Десерты / Комбо / Сезонные)
-- Зачёркнутые цены на комбо
-- Добавление в корзину с количеством
+### Catalog
+- Products with filters (Coffee / Tea / Pastry / Desserts / Combos / Seasonal)
+- Strikethrough prices on combos
+- Add to cart with quantity
 
-### Корзина
-- Управление количеством товаров
-- Итоговая сумма
-- Модалка оформления заказа
+### Cart
+- Manage item quantities
+- Total price
+- Checkout modal
 
-### Оформление заказа
-- Выбор времени получения (слоты 9:00–21:30)
-- Выбор способа оплаты (наличные / карта)
-- Красивый номер заказа (`CWL-XXXXX`)
-- Экран успеха с галочкой
-- Сохранение в Supabase
+### Checkout
+- Pickup time selection (slots 9:00–21:30)
+- Payment method selection (cash / card)
+- Nice order number (`CWL-XXXXX`)
+- Success screen with checkmark
+- Saving to Supabase
 
-### Профиль
-- История заказов с датами
-- Настройки (имя, почта, дата рождения)
-- Техподдержка с FAQ и формой обратной связи
-- Контакты кофейни с картой
-- Пользовательское соглашение
+### Profile
+- Order history with dates
+- Settings (name, email, date of birth)
+- Support with FAQ and feedback form
+- Coffee shop contacts with map
+- User agreement
 
-### Главная
-- Поиск с debounce
-- Карусель популярных комбо
-- Сезонные предложения с добавлением в корзину
-- График загруженности кофейни
-- Адрес и часы работы
+### Home
+- Search with debounce
+- Popular combos carousel
+- Seasonal offers with add to cart
+- Coffee shop load chart
+- Address and working hours
 
 ### PWA
-- Service Worker с кешированием
-- Установка на телефон (Android / iOS)
-- Модалка с инструкцией для iOS
+- Service Worker with caching
+- Phone installation (Android / iOS)
+- iOS install guide modal
 
-## Безопасность (учебный проект)
+## Security (learning project)
 
-RLS включён, но политики используют `true` — это временное решение для демонстрации.
-Реальная защита требует **Supabase Auth** с политиками на основе `auth.uid()`.
+RLS is enabled, but policies use `true` — this is a temporary solution for demonstration purposes.
+Real protection requires **Supabase Auth** with policies based on `auth.uid()`.
 
-**Текущее состояние:**
-- RLS включён на таблицах `users` и `orders`
-- Политики разрешают анонимный доступ (для работы имитации авторизации)
-- Данные в проекте тестовые
+**Current state:**
+- RLS is enabled on `users` and `orders` tables
+- Policies allow anonymous access (to support authentication simulation)
+- Data in the project is test data
 
-**В продакшене:**
-- Перейти на Supabase Auth
-- Использовать `auth.uid() = user_id` в политиках
-- Ограничить SELECT/UPDATE/INSERT только своими данными
+**In production:**
+- Switch to Supabase Auth
+- Use `auth.uid() = user_id` in policies
+- Restrict SELECT/UPDATE/INSERT to own data only
 
-## Установка и запуск
+## Installation and Launch
 
 ```bash
-# Клонировать репозиторий
+# Clone the repository
 git clone https://github.com/PlayerFront/coffee-owl.git
 
-# Установить зависимости
+# Install dependencies
 npm install
 
-# Создать .env файл
+# Create .env file
 REACT_APP_SUPABASE_URL=your_supabase_url
 REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-# Запустить dev-сервер
+# Start the dev server
 npm start
 
-# Собрать продакшн-версию
+# Build the production version
 npm run build
 
-# Запустить тесты
+# Run tests
 npm test
